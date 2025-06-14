@@ -1,5 +1,4 @@
-
-import React from "react";
+import React, { useState } from "react";
 import IntroSection from "../components/IntroSection";
 import RolesCarousel from "../components/RolesCarousel";
 import ExperienceCarousel from "../components/ExperienceCarousel";
@@ -12,13 +11,23 @@ import SystemsThinking from "../components/SystemsThinking";
 import ContactSection from "../components/ContactSection";
 import ThemeToggle from "../components/ThemeToggle";
 
-// Full mobile-first page layout using carousels & scroll
 const Index = () => {
+  const [isDark, setIsDark] = useState(false);
+
+  // Auto-toggle dark mode class on <html>
+  React.useEffect(() => {
+    if (isDark) {
+      document.documentElement.classList.add("dark");
+    } else {
+      document.documentElement.classList.remove("dark");
+    }
+  }, [isDark]);
+
   return (
     <div className="min-h-screen font-sora bg-gradient-to-b from-blue-50 via-white to-purple-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 w-full overflow-x-hidden">
       {/* Sticky Theme toggle for mobile */}
       <div className="fixed top-2 right-4 z-50">
-        <ThemeToggle />
+        <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
       </div>
       {/* Stick PM badge progress at top on mobile */}
       <div className="sticky top-0 z-40">

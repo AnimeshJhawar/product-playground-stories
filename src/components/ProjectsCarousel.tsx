@@ -1,27 +1,34 @@
-
 import React, { useState } from "react";
 import SectionCarousel from "./SectionCarousel";
 import { motion, AnimatePresence } from "framer-motion";
-import { Java, Python, Figma } from "lucide-react";
+import { Code2, Terminal, Figma, Lock } from "lucide-react";
 
 const projects = [
   {
     name: "Pharmacy Digitization",
     locked: false,
     impact: "Digitized pharmacy workflows for hundreds of clinics.",
-    tools: [<Java key="java" />, <Figma key="figma" />],
+    tools: [
+      <Code2 key="java" className="w-5 h-5" />, 
+      <Figma key="figma" className="w-5 h-5" />
+    ],
   },
   {
     name: "DSCoin",
     locked: true,
     impact: "Blockchain demo for secure transactions & smart contracts.",
-    tools: [<Java key="java" />, <Python key="python" />],
+    tools: [
+      <Code2 key="java" className="w-5 h-5" />, 
+      <Terminal key="python" className="w-5 h-5" />
+    ],
   },
   {
     name: "Psychological Survey Website",
     locked: true,
     impact: "Survey/calibration platform for behavioral research.",
-    tools: [<Figma key="figma" />],
+    tools: [
+      <Figma key="figma" className="w-5 h-5" />
+    ],
   }
 ];
 
