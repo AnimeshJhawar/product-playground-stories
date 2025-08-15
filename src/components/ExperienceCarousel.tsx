@@ -10,8 +10,11 @@ const experiences = [
     title: "Product Manager Intern / APM",
     duration: "2023–Now",
     bullets: [
-      "Led lab report access redesign impacting 5M+ users.",
-      "Rolled out permission systems enabling fast feature launches."
+      "Led complete desktop web experience revamp for lab test bookings, impacting 5M+ users.",
+      "Enhanced internal order management systems improving supply chain efficiency by 25%.",
+      "Implemented strategic communication triggers across order journey reducing support tickets by 30%.",
+      "Built comprehensive dashboards for monitoring communication performance and supply chain metrics.",
+      "Conducted A/B testing across multiple product features improving conversion rates."
     ]
   },
   {
@@ -20,8 +23,9 @@ const experiences = [
     title: "PM Intern",
     duration: "2022–23",
     bullets: [
-      "Built OTC e-pharmacy MVP with 200K+ monthly visits.",
-      "Managed cross-team handoffs for delivery experience."
+      "Built OTC e-pharmacy MVP from scratch achieving 200K+ monthly visits.",
+      "Designed and managed cross-team handoffs for seamless delivery experience.",
+      "Conducted user research and market analysis for pharmacy digitization strategy."
     ]
   },
   {
@@ -30,8 +34,9 @@ const experiences = [
     title: "Summer Research Intern",
     duration: "2022",
     bullets: [
-      "Researched voice assistant onboarding for 10M+ users.",
-      "Filed 2 process optimization patents with the team."
+      "Researched voice assistant onboarding flows for Samsung's 10M+ user base.",
+      "Filed 2 process optimization patents with the research team.",
+      "Analyzed user behavior patterns and designed improved interaction flows."
     ]
   }
 ];

@@ -1,14 +1,13 @@
-
 import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Badge } from "./badge";
 
 const BADGES = [
-  { name: "🧠 Storyteller", emoji: "📖", trigger: "projects", color: "bg-blue-200 dark:bg-blue-900/60" },
-  { name: "📊 Optimizer", emoji: "📉", trigger: "data", color: "bg-violet-200 dark:bg-violet-900/60" },
-  { name: "💬 Empathizer", emoji: "🫂", trigger: "leadership", color: "bg-teal-200 dark:bg-teal-900/60" },
+  { name: "🧠 Storyteller", emoji: "📖", trigger: "playground", color: "bg-blue-200 dark:bg-blue-900/60" },
+  { name: "📊 Optimizer", emoji: "📉", trigger: "projects", color: "bg-violet-200 dark:bg-violet-900/60" },
+  { name: "💬 Empathizer", emoji: "🫂", trigger: "roles", color: "bg-teal-200 dark:bg-teal-900/60" },
   { name: "🚀 Builder", emoji: "🔧", trigger: "experience", color: "bg-pink-200 dark:bg-pink-900/60" },
-  { name: "🎯 Strategist", emoji: "🧩", trigger: "funnel", color: "bg-yellow-200 dark:bg-yellow-900/60" },
+  { name: "🎯 Strategist", emoji: "🧩", trigger: "systems", color: "bg-yellow-200 dark:bg-yellow-900/60" },
 ];
 
 export default function PMBadgeProgress() {
@@ -48,27 +47,29 @@ export default function PMBadgeProgress() {
 
   return (
     <>
-      <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-50 w-max px-4 backdrop-blur-md bg-white/70 dark:bg-slate-900/70 border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg flex items-center gap-3 py-2 select-none">
-        <div className="relative flex items-center gap-2">
-          {BADGES.map((b, i) => (
+      <div className="w-full px-4 py-2 backdrop-blur-md bg-white/90 dark:bg-slate-900/90 border-b border-slate-200/50 dark:border-slate-700/50 flex items-center justify-center">
+        <div className="flex items-center gap-3 select-none">
+          <div className="relative flex items-center gap-2">
+            {BADGES.map((b, i) => (
+              <motion.div
+                className={`w-6 h-6 rounded-full flex items-center justify-center font-bold text-sm ring-1 ring-slate-300 dark:ring-slate-600 transition-all duration-500 ${unlocked[b.trigger] ? b.color + " shadow-md" : "bg-slate-100 dark:bg-slate-800 opacity-50"}`}
+                key={b.name}
+                animate={{ scale: unlocked[b.trigger] ? 1.05 : 1, filter: unlocked[b.trigger] ? "brightness(1.1)" : "none" }}
+                title={b.name}
+              >
+                <span className="text-xs">{b.emoji}</span>
+              </motion.div>
+            ))}
+          </div>
+          <motion.div className="w-24 h-1.5 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
             <motion.div
-              className={`w-8 h-8 rounded-full flex items-center justify-center font-bold text-lg ring-2 ring-slate-300 dark:ring-slate-600 transition-all duration-500 ${unlocked[b.trigger] ? b.color + " shadow-md" : "bg-slate-100 dark:bg-slate-800 opacity-50"}`}
-              key={b.name}
-              animate={{ scale: unlocked[b.trigger] ? 1.1 : 1, filter: unlocked[b.trigger] ? "brightness(1.1)" : "none" }}
-              title={b.name}
-            >
-              <span className="">{b.emoji}</span>
-            </motion.div>
-          ))}
+              className="h-1.5 bg-gradient-to-r from-blue-400 via-pink-400 to-violet-400 rounded-full"
+              initial={{ width: 0 }}
+              animate={{ width: `${progress * 100}%` }}
+              transition={{ duration: 0.6 }}
+            />
+          </motion.div>
         </div>
-        <motion.div className="ml-3 w-32 h-2 bg-slate-200 dark:bg-slate-800 rounded-full overflow-hidden">
-          <motion.div
-            className="h-2 bg-gradient-to-r from-blue-400 via-pink-400 to-violet-400 rounded-full"
-            initial={{ width: 0 }}
-            animate={{ width: `${progress * 100}%` }}
-            transition={{ duration: 0.6 }}
-          />
-        </motion.div>
       </div>
       {/* Modal */}
       <AnimatePresence>
@@ -89,7 +90,7 @@ export default function PMBadgeProgress() {
               onClick={e => e.stopPropagation()}
             >
               <h3 className="text-2xl font-sora font-bold mb-2">
-                🎉 You’re now an honorary <br /> PM-in-chief! <span className="text-3xl">👑</span>
+                🎉 You're now an honorary <br /> PM-in-chief! <span className="text-3xl">👑</span>
               </h3>
               <p className="text-slate-700 dark:text-slate-300 font-inter mb-4">Badge mastery unlocked. Send your résumé to SpaceX?</p>
               <button
