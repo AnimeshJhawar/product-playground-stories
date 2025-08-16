@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const navigate = useNavigate();
 
   const navItems = [
     { label: '📚 PM Resources', href: '/pm-resources', isExternal: true },
@@ -17,7 +19,7 @@ const Header = () => {
 
   const scrollToSection = (href: string) => {
     if (href.startsWith('/')) {
-      window.location.href = href;
+      navigate(href);
       return;
     }
     const element = document.querySelector(href);
