@@ -36,6 +36,12 @@
 
     --radius: 0.5rem;
 
+    /* Glassmorphism colors */
+    --glass-light: 255 255 255;
+    --glass-dark: 15 23 42;
+    --glass-border-light: 226 232 240;
+    --glass-border-dark: 51 65 85;
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -99,5 +105,33 @@
 
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+@layer components {
+  /* Glassmorphism utilities */
+  .glass {
+    @apply bg-white/10 dark:bg-slate-900/10 backdrop-blur-lg border border-white/20 dark:border-slate-700/20;
+  }
+  
+  .glass-card {
+    @apply bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm border border-slate-200/50 dark:border-slate-700/50;
+  }
+  
+  .glass-navbar {
+    @apply bg-white/90 dark:bg-slate-900/90 backdrop-blur-lg border-b border-slate-200/50 dark:border-slate-700/50;
+  }
+  
+  /* Hover underline effect */
+  .nav-link {
+    @apply relative transition-colors duration-200;
+  }
+  
+  .nav-link::after {
+    @apply content-[''] absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 dark:bg-blue-400 transition-all duration-300;
+  }
+  
+  .nav-link:hover::after {
+    @apply w-full;
   }
 }

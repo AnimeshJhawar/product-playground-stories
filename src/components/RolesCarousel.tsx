@@ -41,23 +41,6 @@ const roles = [
     ],
     skills: ["Social Impact", "Rural Healthcare", "POS Systems", "Inventory Management", "User Research", "Product Development"],
     link: undefined
-  },
-  {
-    title: "HPAIR 2025 Delegate – Univ. of Tokyo",
-    logo: "",
-    summary: "Global conference for next-gen leaders.",
-    period: "2025",
-    status: "Selected",
-    location: "Tokyo, Japan",
-    fullDescription: "Selected as one of 300 delegates worldwide for Harvard Project for Asian and International Relations (HPAIR) conference at University of Tokyo. Participating in discussions on technology, healthcare policy, and international relations with global leaders and fellow changemakers.",
-    achievements: [
-      "Selected from 2000+ applicants across Asia-Pacific region",
-      "Representing India in technology and healthcare innovation discussions",
-      "Networking with 300+ global leaders and policy makers",
-      "Contributing to policy recommendations on digital health initiatives"
-    ],
-    skills: ["International Relations", "Policy Analysis", "Healthcare Policy", "Cross-cultural Communication", "Leadership"],
-    link: undefined
   }
 ];
 
@@ -72,54 +55,73 @@ export default function RolesCarousel() {
   };
 
   return (
-    <section className="w-full my-2" id="roles">
-      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 ml-4 mb-2">Current Roles</h3>
-      <SectionCarousel ariaLabel="Professional Roles">
-        {roles.map((role, i) => (
-          <motion.div key={role.title} className="relative w-full">
-            <div
-              className={`flex flex-col items-center justify-center glass-card min-h-44 cursor-pointer transition-all p-5
-                rounded-2xl border border-slate-200 dark:border-slate-800
-                ${expandedIndex === i ? "shadow-2xl scale-[1.02] z-10 bg-white/90 dark:bg-slate-900/90" : "shadow-sm bg-white/60 dark:bg-slate-900/60"}
-              `}
+    <section className="py-20" id="roles">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent">
+            Current Roles
+          </h2>
+          <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
+            Actively shaping products and communities across healthtech and social impact
+          </p>
+        </motion.div>
+
+        <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
+          {roles.map((role, index) => (
+            <motion.div
+              key={role.title}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.2 }}
+              viewport={{ once: true }}
+              whileHover={{ scale: 1.02 }}
               onClick={() => handleRoleClick(role)}
+              className="glass-card rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl"
             >
-              <div className="mb-2">
-                {role.logo ? (
-                  <img src={role.logo} alt="logo" className="w-10 h-10 rounded-xl shadow" />
-                ) : (
-                  <span className="w-10 h-10 block rounded-xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-2xl">
-                    {role.title[0]}
-                  </span>
+              <div className="flex items-start gap-4 mb-4">
+                {role.logo && (
+                  <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0 bg-slate-100 dark:bg-slate-700">
+                    <img 
+                      src={role.logo} 
+                      alt={`${role.title} logo`}
+                      className="w-full h-full object-cover"
+                    />
+                  </div>
                 )}
-              </div>
-              <div className="font-semibold text-center text-slate-800 dark:text-slate-100 text-base">{role.title}</div>
-              <div className="flex gap-2 mt-2 text-xs">
-                <span className="bg-blue-100 text-blue-800 px-2 rounded-full font-medium">{role.period}</span>
-                <span className="bg-green-100 text-green-800 px-2 rounded-full font-medium">{role.status}</span>
-              </div>
-              <AnimatePresence>
-                {expandedIndex === i && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 15 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0, y: 12 }}
-                    className="w-full mt-4 text-slate-700 dark:text-slate-300 text-sm"
-                  >
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-bold text-slate-900 dark:text-slate-100 mb-1">
+                    {role.title}
+                  </h3>
+                  <div className="flex items-center gap-2 text-sm text-slate-500 dark:text-slate-400 mb-2">
+                    <span>{role.period}</span>
+                    <span>•</span>
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      role.status === 'Active' 
+                        ? 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400'
+                        : 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                    }`}>
+                      {role.status}
+                    </span>
+                  </div>
+                  <p className="text-slate-600 dark:text-slate-300 text-sm mb-3">
                     {role.summary}
-                    {role.link && (
-                      <div className="mt-1">
-                        <a href={role.link} target="_blank" className="inline-block underline text-blue-500 hover:text-blue-700 text-xs">Visit</a>
-                      </div>
-                    )}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        ))}
-      </SectionCarousel>
-      
+                  </p>
+                  <p className="text-xs text-slate-500 dark:text-slate-400">
+                    {role.location}
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+      </div>
+
       <RoleDetailModal
         role={selectedRole}
         isOpen={isModalOpen}

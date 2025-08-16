@@ -9,15 +9,20 @@ interface ThemeToggleProps {
 }
 
 const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, setIsDark }) => {
+  const toggleTheme = () => {
+    setIsDark(!isDark);
+  };
+
   return (
     <motion.button
-      initial={{ scale: 0 }}
-      animate={{ scale: 1 }}
-      transition={{ delay: 1 }}
+      onClick={toggleTheme}
+      initial={{ opacity: 0, scale: 0.8 }}
+      animate={{ opacity: 1, scale: 1 }}
+      transition={{ duration: 0.5, delay: 0.8 }}
       whileHover={{ scale: 1.1 }}
-      whileTap={{ scale: 0.95 }}
-      onClick={() => setIsDark(!isDark)}
-      className="fixed top-4 right-4 z-50 p-3 rounded-full bg-white/90 dark:bg-slate-800/90 backdrop-blur-sm shadow-lg border border-slate-200/20 dark:border-slate-700/20 hover:shadow-xl transition-all duration-300"
+      whileTap={{ scale: 0.9 }}
+      className="fixed bottom-4 right-4 z-40 p-3 glass-card rounded-full shadow-lg transition-colors duration-300"
+      aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       <motion.div
         initial={false}
@@ -27,7 +32,7 @@ const ThemeToggle: React.FC<ThemeToggleProps> = ({ isDark, setIsDark }) => {
         {isDark ? (
           <Sun className="w-5 h-5 text-yellow-500" />
         ) : (
-          <Moon className="w-5 h-5 text-slate-700" />
+          <Moon className="w-5 h-5 text-slate-600" />
         )}
       </motion.div>
     </motion.button>

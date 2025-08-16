@@ -8,15 +8,28 @@ const ContactSection = () => {
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const useCases = [
-    { id: 'collaborate', label: '🤝 Collaborate on a project', emoji: '🚀' },
-    { id: 'coffee', label: '☕ Grab coffee & chat PM', emoji: '💬' },
-    { id: 'feedback', label: '💭 Get product feedback', emoji: '🎯' },
-    { id: 'hiring', label: '👥 Discuss opportunities', emoji: '💼' },
-    { id: 'just-hi', label: '👋 Just saying hi!', emoji: '✨' }
+    { id: 'collaborate', label: 'Collaborate on a project' },
+    { id: 'coffee', label: 'Grab coffee & chat PM' },
+    { id: 'feedback', label: 'Get product feedback' },
+    { id: 'hiring', label: 'Discuss opportunities' },
+    { id: 'just-hi', label: 'Just saying hi!' }
   ];
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const form = e.target as HTMLFormElement;
+    const formData = new FormData(form);
+    
+    // Check if all required fields are filled
+    const name = formData.get('name') as string;
+    const email = formData.get('email') as string;
+    const message = formData.get('message') as string;
+    
+    if (!selectedUseCase || !name || !email || !message) {
+      alert('Please fill in all required fields');
+      return;
+    }
+    
     setIsSubmitted(true);
     setTimeout(() => setIsSubmitted(false), 3000);
   };
@@ -32,7 +45,7 @@ const ContactSection = () => {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-pink-600 dark:from-slate-100 dark:to-pink-400 bg-clip-text text-transparent">
-            💌 Say Hi
+            Say Hi
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Let's connect! Whether it's product strategy, user research insights, or just a good conversation over coffee ☕
@@ -83,7 +96,6 @@ const ContactSection = () => {
                         onChange={(e) => setSelectedUseCase(e.target.value)}
                         className="sr-only"
                       />
-                      <span className="text-2xl mr-3">{useCase.emoji}</span>
                       <span className="font-medium text-slate-700 dark:text-slate-300">
                         {useCase.label}
                       </span>
@@ -100,6 +112,7 @@ const ContactSection = () => {
                   </label>
                   <input
                     type="text"
+                    name="name"
                     required
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="Your name"
@@ -111,6 +124,7 @@ const ContactSection = () => {
                   </label>
                   <input
                     type="email"
+                    name="email"
                     required
                     className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300"
                     placeholder="your@email.com"
@@ -124,6 +138,7 @@ const ContactSection = () => {
                   Tell me more
                 </label>
                 <textarea
+                  name="message"
                   rows={4}
                   required
                   className="w-full px-4 py-3 rounded-xl bg-slate-50 dark:bg-slate-700 border border-slate-200 dark:border-slate-600 focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-300 resize-none"
@@ -175,7 +190,7 @@ const ContactSection = () => {
               
               <div className="space-y-4">
                 <motion.a
-                  href="mailto:animesh@example.com"
+                  href="mailto:javaranimesh12@gmail.com"
                   whileHover={{ scale: 1.02 }}
                   className="flex items-center gap-4 p-4 bg-slate-50 dark:bg-slate-700 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-600 transition-all duration-300"
                 >
@@ -184,7 +199,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900 dark:text-slate-100">Email</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-300">animesh@example.com</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-300">javaranimesh12@gmail.com</div>
                   </div>
                 </motion.a>
 
@@ -210,7 +225,7 @@ const ContactSection = () => {
                   </div>
                   <div>
                     <div className="font-semibold text-slate-900 dark:text-slate-100">Location</div>
-                    <div className="text-sm text-slate-600 dark:text-slate-300">Delhi, India</div>
+                    <div className="text-sm text-slate-600 dark:text-slate-300">Gurugram, India</div>
                   </div>
                 </div>
               </div>

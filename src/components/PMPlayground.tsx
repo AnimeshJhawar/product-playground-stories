@@ -10,6 +10,8 @@ const PMPlayground = () => {
     {
       id: 1,
       title: "Live Lab Reports Widget",
+      company: "Tata 1mg",
+      companyLink: "https://1mg.com",
       period: "2024",
       impact: "40% faster report access",
       description: "Redesigned lab report flow based on diabetic user interviews, reducing friction in critical health moments.",
@@ -20,6 +22,8 @@ const PMPlayground = () => {
     {
       id: 2,
       title: "Homepage Activation Funnel",
+      company: "Tata 1mg",
+      companyLink: "https://1mg.com",
       period: "2023-24",
       impact: "25% conversion boost",
       description: "Complete homepage revamp with A/B tested user flows and personalized onboarding experiences.",
@@ -30,6 +34,8 @@ const PMPlayground = () => {
     {
       id: 3,
       title: "Role-Permission Architecture",
+      company: "Crackle",
+      companyLink: "https://crackle.so",
       period: "2023",
       impact: "3x faster feature rollouts",
       description: "Built scalable permission system enabling rapid feature deployment across different user segments.",
@@ -40,6 +46,8 @@ const PMPlayground = () => {
     {
       id: 4,
       title: "dWeb vs mWeb Strategy",
+      company: "Samsung",
+      companyLink: "https://samsung.com",
       period: "2023",
       impact: "Unified user experience",
       description: "Strategic analysis and implementation roadmap for desktop vs mobile web platform optimization.",
@@ -59,8 +67,8 @@ const PMPlayground = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent">
-            🚀 My PM Playground
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent text-center">
+            My PM Playground
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl mx-auto">
             Interactive timeline of product stories - from user research insights to business impact
@@ -96,9 +104,19 @@ const PMPlayground = () => {
                   
                   <div className="flex-1">
                     <div className="flex items-center justify-between mb-2">
-                      <h3 className="font-bold text-slate-900 dark:text-slate-100">
-                        {project.title}
-                      </h3>
+                      <div>
+                        <h3 className="font-bold text-slate-900 dark:text-slate-100">
+                          {project.title}
+                        </h3>
+                        <a 
+                          href={project.companyLink}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                        >
+                          @ {project.company}
+                        </a>
+                      </div>
                       <span className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
                         <Calendar size={14} />
                         {project.period}

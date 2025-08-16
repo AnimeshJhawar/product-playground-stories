@@ -6,12 +6,12 @@ import ExperienceCarousel from "../components/ExperienceCarousel";
 import ProjectsCarousel from "../components/ProjectsCarousel";
 import AwardsCarousel from "../components/AwardsCarousel";
 import PMPlayground from "../components/PMPlayground";
-import PMBadgeProgress from "../components/ui/PMBadgeProgress";
-import MetaFunFact from "../components/ui/MetaFunFact";
 import LifeBeyondWork from "../components/LifeBeyondWork";
 import SystemsThinking from "../components/SystemsThinking";
 import ContactSection from "../components/ContactSection";
 import ThemeToggle from "../components/ThemeToggle";
+import SocialLinks from "../components/SocialLinks";
+import WebsiteInfoButton from "../components/WebsiteInfoButton";
 
 const Index = () => {
   const [isDark, setIsDark] = useState(false);
@@ -28,6 +28,8 @@ const Index = () => {
   return (
     <div className="min-h-screen font-sora bg-gradient-to-b from-blue-50 via-white to-purple-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900 w-full overflow-x-hidden">
       <Header />
+      <SocialLinks />
+      <WebsiteInfoButton />
       <ThemeToggle isDark={isDark} setIsDark={setIsDark} />
       
       {/* Main content */}
@@ -42,9 +44,6 @@ const Index = () => {
         <LifeBeyondWork />
         <ContactSection />
       </main>
-      
-      <PMBadgeProgress />
-      <MetaFunFact />
     </div>
   );
 };
