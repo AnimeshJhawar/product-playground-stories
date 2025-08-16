@@ -3,6 +3,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import App from "./App.tsx";
 import PMResources from "./pages/PMResources.tsx";
+import NotFound from "./pages/NotFound.tsx";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
@@ -11,6 +12,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/pm-resources" element={<PMResources />} />
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </Router>
   </React.StrictMode>,
