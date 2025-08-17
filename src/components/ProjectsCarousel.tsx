@@ -1,90 +1,126 @@
 import React, { useState } from "react";
-import SectionCarousel from "./SectionCarousel";
 import { motion, AnimatePresence } from "framer-motion";
-import { Code2, Terminal, Figma, Lock } from "lucide-react";
+import { Code2, Terminal, Figma, Github, ExternalLink } from "lucide-react";
 
-const projects = [
+const technicalProjects = [
   {
     name: "Pharmacy Digitization",
-    locked: false,
     impact: "Digitized pharmacy workflows for hundreds of clinics.",
-    tools: [
-      <Code2 key="java" className="w-5 h-5" />, 
-      <Figma key="figma" className="w-5 h-5" />
-    ],
+    tools: [<Code2 key="java" className="w-5 h-5" />, <Figma key="figma" className="w-5 h-5" />],
+    githubLink: "https://github.com/animesh",
   },
   {
     name: "DSCoin",
-    locked: true,
     impact: "Blockchain demo for secure transactions & smart contracts.",
-    tools: [
-      <Code2 key="java" className="w-5 h-5" />, 
-      <Terminal key="python" className="w-5 h-5" />
-    ],
+    tools: [<Code2 key="java" className="w-5 h-5" />, <Terminal key="python" className="w-5 h-5" />],
+    githubLink: "https://github.com/animesh",
   },
+];
+
+const caseStudies = [
   {
-    name: "Psychological Survey Website",
-    locked: true,
+    name: "Psychological Survey Platform",
     impact: "Survey/calibration platform for behavioral research.",
-    tools: [
-      <Figma key="figma" className="w-5 h-5" />
-    ],
-  }
+    tools: [<Figma key="figma" className="w-5 h-5" />],
+    caseStudyLink: "https://example.com/case-study",
+  },
 ];
 
 export default function ProjectsCarousel() {
-  const [unlocked, setUnlocked] = useState([true, false, false]);
-  const [activeIdx, setActiveIdx] = useState<number | null>(0);
+  const [selectedProject, setSelectedProject] = useState<any>(null);
 
-  const handleUnlock = (i: number) => {
-    setUnlocked(prev => prev.map((v, idx) => idx === i ? true : v));
-    setActiveIdx(i);
-  };
+  const ProjectCard = ({ projects, type }: { projects: any[], type: string }) => (
+    <div className="grid md:grid-cols-2 gap-6">
+      {projects.map((proj, i) => (
+        <motion.div 
+          key={proj.name} 
+          className="glass-card bg-white/70 dark:bg-slate-900/70 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md cursor-pointer hover:shadow-lg transition-all"
+          onClick={() => setSelectedProject(proj)}
+          whileHover={{ y: -2 }}
+        >
+          <div className="font-semibold text-slate-900 dark:text-slate-100 mb-2">{proj.name}</div>
+          <div className="flex gap-2 mb-3">{proj.tools}</div>
+          <p className="text-slate-700 dark:text-slate-300 text-sm">{proj.impact}</p>
+        </motion.div>
+      ))}
+    </div>
+  );
 
   return (
-    <section id="projects" className="w-full my-2">
-      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 ml-4 mb-2">What I’ve Built</h3>
-      <SectionCarousel ariaLabel="Projects">
-        {projects.map((proj, i) => (
-          <motion.div key={proj.name} className="relative w-full">
-            <div
-              className={`glass-card min-h-44 flex flex-col items-center justify-center p-5 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md transition-all cursor-pointer
-                ${unlocked[i] ? "bg-white/80 dark:bg-slate-900/80" : "bg-slate-100/70 dark:bg-slate-800/70"}
-              `}
-              onClick={() => !unlocked[i] && handleUnlock(i)}
+    <section id="projects" className="py-20 relative">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent">
+            What I've Built
+          </h2>
+        </motion.div>
+
+        <div className="space-y-12">
+          <div>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-6 text-center">My Technical Project Repo</h3>
+            <ProjectCard projects={technicalProjects} type="technical" />
+          </div>
+
+          <div>
+            <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-6 text-center">My Case Studies</h3>
+            <ProjectCard projects={caseStudies} type="case-study" />
+          </div>
+        </div>
+
+        {/* Project Modal */}
+        <AnimatePresence>
+          {selectedProject && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
+              onClick={() => setSelectedProject(null)}
             >
-              <div className="font-semibold text-center text-base text-slate-900 dark:text-slate-100 mb-1">
-                {proj.name}
-              </div>
-              <div className={`flex gap-2 text-sm items-center justify-center mb-2`}>
-                {proj.tools}
-              </div>
-              <AnimatePresence>
-                {unlocked[i] ? (
-                  <motion.p
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    exit={{ opacity: 0 }}
-                    className="text-slate-700 dark:text-slate-300 text-sm text-center"
+              <motion.div
+                initial={{ scale: 0.9, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scale: 0.9, opacity: 0 }}
+                className="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full border border-slate-200 dark:border-slate-700"
+                onClick={(e) => e.stopPropagation()}
+              >
+                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{selectedProject.name}</h3>
+                <p className="text-slate-700 dark:text-slate-300 mb-6">{selectedProject.impact}</p>
+                
+                {selectedProject.githubLink && (
+                  <a
+                    href={selectedProject.githubLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-slate-900 dark:bg-slate-700 text-white px-4 py-2 rounded-lg hover:bg-slate-800 dark:hover:bg-slate-600 transition-colors"
                   >
-                    {proj.impact}
-                  </motion.p>
-                ) : (
-                  <motion.div
-                    initial={{ opacity: 0, scale: 0.97 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0 }}
-                    className="flex flex-col items-center justify-center"
-                  >
-                    <span className="text-2xl">🔒</span>
-                    <span className="text-sm text-slate-400">Tap to unlock</span>
-                  </motion.div>
+                    <Github size={20} />
+                    View on GitHub
+                  </a>
                 )}
-              </AnimatePresence>
-            </div>
-          </motion.div>
-        ))}
-      </SectionCarousel>
+
+                {selectedProject.caseStudyLink && (
+                  <a
+                    href={selectedProject.caseStudyLink}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                  >
+                    <ExternalLink size={20} />
+                    View Case Study
+                  </a>
+                )}
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }

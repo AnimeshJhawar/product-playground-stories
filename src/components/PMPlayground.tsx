@@ -12,6 +12,7 @@ const PMPlayground = () => {
       title: "Live Lab Reports Widget",
       company: "Tata 1mg",
       companyLink: "https://1mg.com",
+      companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2024",
       impact: "40% faster report access",
       description: "Redesigned lab report flow based on diabetic user interviews, reducing friction in critical health moments.",
@@ -24,6 +25,7 @@ const PMPlayground = () => {
       title: "Homepage Activation Funnel",
       company: "Tata 1mg",
       companyLink: "https://1mg.com",
+      companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2023-24",
       impact: "25% conversion boost",
       description: "Complete homepage revamp with A/B tested user flows and personalized onboarding experiences.",
@@ -36,6 +38,7 @@ const PMPlayground = () => {
       title: "Role-Permission Architecture",
       company: "Crackle",
       companyLink: "https://crackle.so",
+      companyLogo: "",
       period: "2023",
       impact: "3x faster feature rollouts",
       description: "Built scalable permission system enabling rapid feature deployment across different user segments.",
@@ -48,6 +51,7 @@ const PMPlayground = () => {
       title: "dWeb vs mWeb Strategy",
       company: "Samsung",
       companyLink: "https://samsung.com",
+      companyLogo: "",
       period: "2023",
       impact: "Unified user experience",
       description: "Strategic analysis and implementation roadmap for desktop vs mobile web platform optimization.",
@@ -108,14 +112,21 @@ const PMPlayground = () => {
                         <h3 className="font-bold text-slate-900 dark:text-slate-100">
                           {project.title}
                         </h3>
-                        <a 
-                          href={project.companyLink}
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
-                        >
-                          @ {project.company}
-                        </a>
+                        <div className="flex items-center gap-2">
+                          {project.companyLogo ? (
+                            <img src={project.companyLogo} alt={project.company} className="w-4 h-4 rounded" />
+                          ) : (
+                            <div className="w-4 h-4 bg-slate-200 dark:bg-slate-700 rounded"></div>
+                          )}
+                          <a 
+                            href={project.companyLink}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-sm text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+                          >
+                            @ {project.company}
+                          </a>
+                        </div>
                       </div>
                       <span className="text-sm text-slate-500 dark:text-slate-400 flex items-center gap-1">
                         <Calendar size={14} />

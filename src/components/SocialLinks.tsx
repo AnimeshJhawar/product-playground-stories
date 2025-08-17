@@ -6,17 +6,17 @@ const SocialLinks = () => {
   const socialLinks = [
     {
       icon: <Mail size={20} />,
-      href: 'mailto:javaranimesh12@gmail.com',
+      href: 'mailto:jhawaranimesh12@gmail.com',
       label: 'Email'
     },
     {
       icon: <Linkedin size={20} />,
-      href: 'https://linkedin.com/in/animesh-jhawar',
+      href: 'https://www.linkedin.com/in/animeshjhawar/',
       label: 'LinkedIn'
     },
     {
       icon: <Instagram size={20} />,
-      href: 'https://instagram.com/animesh.jhawar',
+      href: 'https://www.instagram.com/animesh__jhawar/',
       label: 'Instagram'
     }
   ];

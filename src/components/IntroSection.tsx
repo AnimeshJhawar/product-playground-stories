@@ -44,7 +44,7 @@ const IntroSection = () => (
           href="/pm-resources"
           className="backdrop-blur-xl bg-gradient-to-r from-blue-500 to-purple-500 text-white px-6 py-3 rounded-xl shadow-lg font-semibold hover:shadow-xl hover:scale-105 transition-all"
         >
-          📚 PM Resource Hub
+          My PM Resources
         </a>
         <a
           href="#playground"
@@ -54,17 +54,15 @@ const IntroSection = () => (
           }}
           className="backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-xl shadow font-semibold text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-700 transition-all"
         >
-          🚀 Explore Work
+          Explore Work
         </a>
         <a
-          href="#contact"
-          onClick={(e) => {
-            e.preventDefault();
-            document.querySelector('#contact')?.scrollIntoView({ behavior: 'smooth' });
-          }}
+          href="https://topmate.io/animesh_jhawar_iitd"
+          target="_blank"
+          rel="noopener noreferrer"
           className="backdrop-blur-xl bg-white/70 dark:bg-slate-800/70 border border-slate-200 dark:border-slate-700 px-6 py-3 rounded-xl shadow font-semibold text-slate-800 dark:text-slate-100 hover:bg-white dark:hover:bg-slate-700 transition-all"
         >
-          💌 Let's Connect
+          Book 1:1
         </a>
       </div>
     </motion.div>

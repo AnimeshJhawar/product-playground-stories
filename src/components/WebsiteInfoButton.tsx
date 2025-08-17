@@ -60,7 +60,7 @@ const WebsiteInfoButton = () => {
 
               <div className="space-y-4">
                 <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-                  This portfolio was built using modern web technologies and AI-powered development tools for optimal performance and user experience.
+                  In a parallel world, this portfolio would have taken 2-3 weeks to design and develop. With modern AI tools and frameworks, it was built in just 2 days while maintaining high quality and attention to detail.
                 </p>
 
                 <div className="space-y-3">

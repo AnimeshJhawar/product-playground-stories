@@ -14,13 +14,11 @@ const Header = () => {
     { label: 'Projects', href: '#projects' },
     { label: 'Systems', href: '#systems' },
     { label: 'Life Beyond', href: '#life' },
-    { label: 'Contact', href: '#contact' }
+    { label: "Let's Connect", href: '#contact' }
   ];
 
   const resourceItems = [
-    { label: 'PM Resources', href: '/pm-resources' },
-    { label: 'Explore Work', href: '#projects' },
-    { label: "Let's Connect", href: '#contact' }
+    { label: 'My PM Resources', href: '/pm-resources' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -61,7 +59,7 @@ const Header = () => {
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1 + 0.5 }}
-                className="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-sm"
+                className="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-xs"
               >
                 {item.label}
               </motion.button>
