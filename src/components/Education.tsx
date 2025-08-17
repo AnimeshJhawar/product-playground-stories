@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const educationData = [
   {
     institution: "IIT Delhi",
-    degree: "B.Tech",
+    degree: "B.Tech in Electrical Engineering",
     duration: "2020-24",
     logo: "/lovable-uploads/d687c6b1-d050-4cb4-867a-c0c07f79897a.png",
     details: {
@@ -33,7 +33,7 @@ const educationData = [
   },
   {
     institution: "Department of Management Studies, IIT Delhi", 
-    degree: "Management Studies",
+    degree: "Minor Degree Business Management",
     duration: "2023-24",
     logo: "/lovable-uploads/7f08cf7d-67dd-477b-a780-ea1ae45b9406.png",
     details: {

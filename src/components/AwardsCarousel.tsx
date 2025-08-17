@@ -48,7 +48,7 @@ const awards = [
 ];
 
 export default function AwardsCarousel() {
-  const [expandedIdx, setExpandedIdx] = useState<number | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   return (
     <section id="awards" className="py-20 relative">
@@ -65,7 +65,7 @@ export default function AwardsCarousel() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid md:grid-cols-3 lg:grid-cols-4 gap-3">
           {awards.map((award, i) => (
             <motion.div 
               key={award.name}
@@ -73,34 +73,35 @@ export default function AwardsCarousel() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              whileHover={{ scale: 1.02 }}
+              whileHover={{ scale: 1.03 }}
+              onHoverStart={() => setHoveredIdx(i)}
+              onHoverEnd={() => setHoveredIdx(null)}
             >
               <div
-                className={`glass-card flex flex-col items-center p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow transition-all cursor-pointer min-h-28
-                  ${expandedIdx === i ? "ring-2 ring-yellow-400 bg-yellow-50/90 dark:bg-yellow-900/40 z-10" : "bg-white/80 dark:bg-slate-900/80 hover:shadow-lg"}
+                className={`glass-card flex flex-col items-center p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow transition-all cursor-pointer min-h-20
+                  ${hoveredIdx === i ? "ring-2 ring-yellow-400 bg-yellow-50/90 dark:bg-yellow-900/40 z-10" : "bg-white/80 dark:bg-slate-900/80 hover:shadow-lg"}
                 `}
-                onClick={() => setExpandedIdx(expandedIdx === i ? null : i)}
               >
-                <div className="flex items-center gap-3 w-full mb-2">
+                <div className="flex items-center gap-2 w-full mb-1">
                   {award.logo && (
-                    <img src={award.logo} alt={award.name} className="w-8 h-8 rounded-lg object-cover flex-shrink-0" />
+                    <img src={award.logo} alt={award.name} className="w-6 h-6 rounded-lg object-cover flex-shrink-0" />
                   )}
                   {!award.logo && (
-                    <div className="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 flex-shrink-0">
+                    <div className="w-6 h-6 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 flex-shrink-0">
                       {award.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
                     </div>
                   )}
                   <div className="flex-1 min-w-0">
-                    <div className="font-semibold text-slate-900 dark:text-slate-100 text-sm line-clamp-2">{award.name}</div>
+                    <div className="font-semibold text-slate-900 dark:text-slate-100 text-xs line-clamp-2">{award.name}</div>
                     <div className="text-xs text-slate-400">{award.year}</div>
                   </div>
                 </div>
-                {expandedIdx === i && (
+                {hoveredIdx === i && (
                   <motion.div
                     initial={{ opacity: 0, y: 10 }}
                     animate={{ opacity: 1, y: 0 }}
                     exit={{ opacity: 0 }}
-                    className="text-slate-700 dark:text-slate-300 text-xs text-center mt-2"
+                    className="text-slate-700 dark:text-slate-300 text-xs text-center mt-1"
                   >
                     {award.detail}
                   </motion.div>

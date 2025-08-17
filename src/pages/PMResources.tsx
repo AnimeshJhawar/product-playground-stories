@@ -14,7 +14,7 @@ const PMResources = () => {
       description: "Product case study for healthcare recruitment",
       driveLink: "#",
       hoverDescription: "Healthcare product strategy presentation for campus placements",
-      logo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png"
+      logo: "/src/assets/1mg-logo.png"
     },
     { 
       name: "Flipkart Campus Recruitment", 
@@ -90,10 +90,10 @@ const PMResources = () => {
       title: "YouTube Channels",
       icon: <Video className="w-6 h-6" />,
       resources: [
-        { name: "Lenny's Podcast", type: "Video", description: "Deep dives with top PMs and founders", link: "https://www.youtube.com/@LennysPodcast" },
-        { name: "Product School", type: "Video", description: "PM fundamentals, case studies, and career advice", link: "https://www.youtube.com/@ProductSchool" },
-        { name: "Being Aakrshit", type: "Video", description: "Authentic PM stories and career insights", link: "https://www.youtube.com/@beingaakrshit3036" },
-        { name: "Product Manager HQ", type: "Video", description: "Interview prep, frameworks, and real PM experiences", link: "#" }
+        { name: "Lenny's Podcast", type: "Video", description: "Deep dives with top PMs and founders", link: "https://www.youtube.com/@LennysPodcast", logo: "/lovable-uploads/youtube-logo.png" },
+        { name: "Product School", type: "Video", description: "PM fundamentals, case studies, and career advice", link: "https://www.youtube.com/@ProductSchool", logo: "/lovable-uploads/youtube-logo.png" },
+        { name: "Being Aakrshit", type: "Video", description: "Authentic PM stories and career insights", link: "https://www.youtube.com/@beingaakrshit3036", logo: "/lovable-uploads/youtube-logo.png" },
+        { name: "Product Manager HQ", type: "Video", description: "Interview prep, frameworks, and real PM experiences", link: "#", logo: "/lovable-uploads/youtube-logo.png" }
       ]
     },
     {
@@ -140,12 +140,12 @@ const PMResources = () => {
 
   const navigationItems = [
     { label: 'My Product Decks', href: '#decks' },
-    { label: 'Essential Books', href: '#books' },
-    { label: 'YouTube Channels', href: '#youtube' },
-    { label: 'Newsletters & Blogs', href: '#newsletters' },
+    { label: 'Essential Books', href: '#essentialbooks' },
+    { label: 'YouTube Channels', href: '#youtubechannels' },
+    { label: 'Newsletters & Blogs', href: '#newslettersblogs' },
     { label: 'Communities', href: '#communities' },
-    { label: 'Interview Prep', href: '#interview' },
-    { label: 'Frameworks & Tools', href: '#frameworks' }
+    { label: 'Interview Prep', href: '#interviewprep' },
+    { label: 'Frameworks & Tools', href: '#frameworkstools' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -186,7 +186,7 @@ const PMResources = () => {
           </div>
 
           {/* Sticky Navigation */}
-          <div className="sticky top-20 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-xl rounded-xl border border-slate-200 dark:border-slate-700 p-4 mb-8">
+          <div className="sticky top-4 z-30 glass-navbar bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-xl border border-slate-200 dark:border-slate-700 p-4 mb-8 shadow-lg">
             <nav className="flex flex-wrap justify-center gap-2">
               {navigationItems.map((item) => (
                 <button
@@ -232,9 +232,19 @@ const PMResources = () => {
                 title={deck.hoverDescription}
               >
                 <div className="flex items-start justify-between mb-3">
-                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                    {deck.name}
-                  </h3>
+                  <div className="flex items-start gap-3 flex-1">
+                    {deck.logo && (
+                      <img src={deck.logo} alt={deck.name} className="w-8 h-8 rounded-lg object-cover flex-shrink-0" />
+                    )}
+                    {!deck.logo && (
+                      <div className="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 flex-shrink-0">
+                        {deck.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
+                      </div>
+                    )}
+                    <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-1">
+                      {deck.name}
+                    </h3>
+                  </div>
                   <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0 ml-2" />
                 </div>
                 <p className="text-slate-600 dark:text-slate-300 text-xs">
@@ -280,13 +290,23 @@ const PMResources = () => {
                     className="group glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
                   >
                     <div className="flex items-start justify-between mb-3">
-                      <div className="flex-1">
-                        <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                          {resource.name}
-                        </h3>
-                        <span className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
-                          {resource.type}
-                        </span>
+                      <div className="flex items-start gap-3 flex-1">
+                        {resource.logo && (
+                          <img src={resource.logo} alt={resource.name} className="w-8 h-8 rounded-lg flex-shrink-0" />
+                        )}
+                        {!resource.logo && (
+                          <div className="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 flex-shrink-0">
+                            {resource.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
+                          </div>
+                        )}
+                        <div className="flex-1">
+                          <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                            {resource.name}
+                          </h3>
+                          <span className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
+                            {resource.type}
+                          </span>
+                        </div>
                       </div>
                       {resource.link && resource.link !== '#' && (
                         <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" />
@@ -302,6 +322,9 @@ const PMResources = () => {
           ))}
         </div>
       </div>
+
+      {/* Footer */}
+      <PMResourcesFooter />
 
       {/* Book Learning Modal */}
       {selectedBook && (

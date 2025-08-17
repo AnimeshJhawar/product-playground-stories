@@ -138,10 +138,22 @@ export default function ProjectsCarousel() {
                     href={selectedProject.caseStudyLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
+                    className="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors mb-3"
                   >
                     <ExternalLink size={20} />
                     View Case Study
+                  </a>
+                )}
+
+                {selectedProject.name === "Pharmacy Digitization" && (
+                  <a
+                    href="https://meditally.lovable.app/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-2 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors"
+                  >
+                    <ExternalLink size={20} />
+                    View Prototype (made for mobile)
                   </a>
                 )}
               </motion.div>

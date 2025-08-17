@@ -6,17 +6,20 @@ import { useNavigate } from 'react-router-dom';
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isAboutDropdownOpen, setIsAboutDropdownOpen] = useState(false);
+  const [isWorkDropdownOpen, setIsWorkDropdownOpen] = useState(false);
   const navigate = useNavigate();
 
   const navItems = [
     { label: 'PM Playground', href: '#playground' },
-    { label: 'Current Roles', href: '#roles' },
-    { label: 'Past Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Omni Presence', href: '#omnipresence' },
     { label: 'My Thinking', href: '#systems' },
     { label: 'Life Beyond', href: '#life' },
     { label: "Let's Connect", href: '#contact' }
+  ];
+
+  const workItems = [
+    { label: 'Current Roles', href: '#roles' },
+    { label: 'Past Experience', href: '#experience' }
   ];
 
   const aboutItems = [
@@ -60,7 +63,7 @@ const Header = () => {
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center space-x-6">
-            {navItems.slice(0, 6).map((item, index) => (
+            {navItems.map((item, index) => (
               <motion.button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}
@@ -72,19 +75,46 @@ const Header = () => {
                 {item.label}
               </motion.button>
             ))}
-            
-            {navItems.slice(6).map((item, index) => (
+
+            {/* Work Experience Dropdown */}
+            <div 
+              className="relative"
+              onMouseEnter={() => setIsWorkDropdownOpen(true)}
+              onMouseLeave={() => setIsWorkDropdownOpen(false)}
+            >
               <motion.button
-                key={item.href}
-                onClick={() => scrollToSection(item.href)}
+                onClick={() => scrollToSection('#roles')}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: (6 + index) * 0.1 + 0.5 }}
-                className="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-xs"
+                transition={{ delay: 5 * 0.1 + 0.5 }}
+                className="flex items-center gap-1 nav-link text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-xs"
               >
-                {item.label}
+                Work Experience
+                <ChevronDown size={14} />
               </motion.button>
-            ))}
+              
+              {isWorkDropdownOpen && (
+                <motion.div
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: 10 }}
+                  className="absolute top-full right-0 mt-2 w-48 bg-white dark:bg-slate-800 rounded-lg shadow-lg border border-slate-200 dark:border-slate-700 py-2 z-50"
+                >
+                  {workItems.map((item) => (
+                    <button
+                      key={item.href}
+                      onClick={() => {
+                        scrollToSection(item.href);
+                        setIsWorkDropdownOpen(false);
+                      }}
+                      className="block w-full text-left px-4 py-2 text-sm text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors"
+                    >
+                      {item.label}
+                    </button>
+                  ))}
+                </motion.div>
+              )}
+            </div>
 
             {/* About Me Dropdown */}
             <div 
@@ -96,7 +126,7 @@ const Header = () => {
                 onClick={() => scrollToSection('#awards')}
                 initial={{ opacity: 0, y: -20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 8 * 0.1 + 0.5 }}
+                transition={{ delay: 6 * 0.1 + 0.5 }}
                 className="flex items-center gap-1 nav-link text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-xs"
               >
                 About Me
@@ -166,7 +196,7 @@ const Header = () => {
             exit={{ opacity: 0, height: 0 }}
             className="lg:hidden py-4 border-t border-slate-200/50 dark:border-slate-700/50"
           >
-            {[...navItems, ...aboutItems, ...resourceItems].map((item, index) => (
+            {[...navItems, ...workItems, ...aboutItems, ...resourceItems].map((item, index) => (
               <motion.button
                 key={item.href}
                 onClick={() => scrollToSection(item.href)}

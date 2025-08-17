@@ -7,25 +7,29 @@ const socialPlatforms = [
     name: 'LinkedIn',
     description: 'Professional updates and industry insights',
     url: 'https://www.linkedin.com/in/animeshjhawar/',
-    gradient: 'from-blue-600 to-blue-700'
+    gradient: 'from-blue-600 to-blue-700',
+    logo: '/src/assets/linkedin-logo.png'
   },
   {
     name: 'YouTube', 
     description: 'Product management tutorials and insights',
     url: 'https://www.youtube.com/@beingaakrshit',
-    gradient: 'from-red-600 to-red-700'
+    gradient: 'from-red-600 to-red-700',
+    logo: '/lovable-uploads/youtube-logo.png'
   },
   {
     name: 'Behance Portfolio',
     description: 'Design work and case studies',
     url: 'https://www.behance.net/animeshjhawar',
-    gradient: 'from-purple-600 to-purple-700'
+    gradient: 'from-purple-600 to-purple-700',
+    logo: '/src/assets/behance-logo.png'
   },
   {
     name: 'GitHub',
     description: 'Open source projects and code repositories',
     url: 'https://github.com/AnimeshJhawar',
-    gradient: 'from-gray-700 to-gray-800'
+    gradient: 'from-gray-700 to-gray-800',
+    logo: '/src/assets/github-logo.png'
   }
 ];
 
@@ -63,13 +67,18 @@ export default function OmniPresence() {
               className="glass-card rounded-2xl p-6 cursor-pointer transition-all duration-300 hover:shadow-xl group block"
             >
               <div className="flex items-start justify-between mb-4">
-                <div className="flex-1">
-                  <h3 className={`font-bold text-lg mb-2 bg-gradient-to-r ${platform.gradient} bg-clip-text text-transparent group-hover:scale-105 transition-transform`}>
-                    {platform.name}
-                  </h3>
-                  <p className="text-slate-600 dark:text-slate-300 text-sm">
-                    {platform.description}
-                  </p>
+                <div className="flex items-start gap-3 flex-1">
+                  {platform.logo && (
+                    <img src={platform.logo} alt={platform.name} className="w-8 h-8 rounded-lg flex-shrink-0" />
+                  )}
+                  <div className="flex-1">
+                    <h3 className={`font-bold text-lg mb-2 bg-gradient-to-r ${platform.gradient} bg-clip-text text-transparent group-hover:scale-105 transition-transform`}>
+                      {platform.name}
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-300 text-sm">
+                      {platform.description}
+                    </p>
+                  </div>
                 </div>
                 <ExternalLink className="w-5 h-5 text-slate-400 group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors" />
               </div>
