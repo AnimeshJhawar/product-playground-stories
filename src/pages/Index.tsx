@@ -8,7 +8,10 @@ import AwardsCarousel from "../components/AwardsCarousel";
 import PMPlayground from "../components/PMPlayground";
 import LifeBeyondWork from "../components/LifeBeyondWork";
 import SystemsThinking from "../components/SystemsThinking";
+import OmniPresence from "../components/OmniPresence";
+import Education from "../components/Education";
 import ContactSection from "../components/ContactSection";
+import Footer from "../components/Footer";
 import ThemeToggle from "../components/ThemeToggle";
 import SocialLinks from "../components/SocialLinks";
 import WebsiteInfoButton from "../components/WebsiteInfoButton";
@@ -40,10 +43,14 @@ const Index = () => {
         <ExperienceCarousel />
         <ProjectsCarousel />
         <AwardsCarousel />
+        <Education />
+        <OmniPresence />
         <SystemsThinking />
         <LifeBeyondWork />
         <ContactSection />
       </main>
+      
+      <Footer />
     </div>
   );
 };

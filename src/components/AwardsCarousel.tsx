@@ -4,34 +4,49 @@ import { motion } from "framer-motion";
 
 const awards = [
   {
+    name: "Thinking Competition - First Runner Up",
+    detail: "Issued by Indian Network For Impact",
+    year: "Dec 2024"
+  },
+  {
+    name: "Business Mela Contest Winner",
+    detail: "Issued by Recruit Co.Pvt. Ltd and IIT Delhi",
+    year: "May 2024"
+  },
+  {
+    name: "Best House Secretary Award",
+    detail: "Issued by Board of Hostel Management, IIT Delhi",
+    year: "May 2024"
+  },
+  {
+    name: "Cumulative Outstanding Contribution to Hostel Activities",
+    detail: "Issued by Indian Institute of Technology, Delhi",
+    year: "May 2024"
+  },
+  {
+    name: "Pride of Alumni Relations",
+    detail: "Issued by Student Alumni Relations, IIT Delhi",
+    year: "May 2024"
+  },
+  {
+    name: "Best Maintenance Secretary",
+    detail: "Issued by Board of Hostel Management, IIT Delhi",
+    year: "May 2023"
+  },
+  {
+    name: "Outstanding Contribution to Club",
+    detail: "Issued by Student Alumni Relations, IIT Delhi",
+    year: "May 2023"
+  },
+  {
     name: "Recruit Business Contest",
-    detail: "Top prize for business case at INI fellowship.",
+    detail: "Top prize for business case at INI fellowship",
     year: "2023"
   },
   {
     name: "INI Fellowship",
-    detail: "Selected for national innovation program.",
+    detail: "Selected for national innovation program",
     year: "2023"
-  },
-  {
-    name: "CBSE Merit Award",
-    detail: "Academic excellence recognition at national level.",
-    year: "2022"
-  },
-  {
-    name: "Cultural Achievement",
-    detail: "National level recognition in cultural activities.",
-    year: "2022"
-  },
-  {
-    name: "Innovation Challenge Winner",
-    detail: "First place in technology innovation competition.",
-    year: "2023"
-  },
-  {
-    name: "Leadership Excellence",
-    detail: "Outstanding leadership in student organizations.",
-    year: "2022"
   }
 ];
 

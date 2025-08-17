@@ -26,7 +26,7 @@ const roles = [
   },
   {
     title: "Fellow @ Indian Network for Impact",
-    logo: "",
+    logo: "/lovable-uploads/f464991b-15e7-4982-ac64-a80948474c26.png",
     summary: "Bridging healthcare & technology for social impact.",
     period: "2023–24",
     status: "Fellow",

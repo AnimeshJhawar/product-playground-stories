@@ -10,8 +10,9 @@ const Header = () => {
   const navItems = [
     { label: 'PM Playground', href: '#playground' },
     { label: 'Current Roles', href: '#roles' },
-    { label: 'Experience', href: '#experience' },
+    { label: 'Past Experience', href: '#experience' },
     { label: 'Projects', href: '#projects' },
+    { label: 'Omni Presence', href: '#omnipresence' },
     { label: 'Systems', href: '#systems' },
     { label: 'Life Beyond', href: '#life' },
     { label: "Let's Connect", href: '#contact' }

@@ -24,6 +24,18 @@ const caseStudies = [
     tools: [<Figma key="figma" className="w-5 h-5" />],
     caseStudyLink: "https://example.com/case-study",
   },
+  {
+    name: "Groww Campus Recruitment Deck",
+    impact: "Strategic product case study for campus recruitment at Groww.",
+    tools: [<Figma key="figma" className="w-5 h-5" />],
+    caseStudyLink: "https://drive.google.com/file/d/1xFn2sjJgE8ww9UxzIsqiOP7rnGYxYkan/view?usp=sharing",
+  },
+  {
+    name: "Flipkart Campus Recruitment Deck", 
+    impact: "Product strategy and analysis for Flipkart recruitment process.",
+    tools: [<Figma key="figma" className="w-5 h-5" />],
+    caseStudyLink: "https://drive.google.com/file/d/1yY9feLpPM6FsWUZGxvlGUb8QgxwQY6zX/view?usp=sharing",
+  },
 ];
 
 export default function ProjectsCarousel() {

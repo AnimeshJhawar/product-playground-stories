@@ -4,21 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const experiences = [
   {
-    company: "Tata 1mg",
-    logo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
-    title: "Associate Product Manager",
-    duration: "2024–Present",
-    bullets: [
-      "Led complete desktop web experience revamp for lab test bookings, impacting 5M+ users.",
-      "Enhanced internal order management systems improving supply chain efficiency by 25%.",
-      "Implemented strategic communication triggers across order journey reducing support tickets by 30%.",
-      "Built comprehensive dashboards for monitoring communication performance and supply chain metrics.",
-      "Conducted A/B testing across multiple product features improving conversion rates."
-    ]
-  },
-  {
     company: "Crackle",
-    logo: "",
+    logo: "/lovable-uploads/8afa878a-8e32-45d5-922d-5826f7ae39b2.png",
     title: "Product Development Intern",
     duration: "Jan 2024 – May 2024",
     bullets: [
@@ -29,7 +16,7 @@ const experiences = [
   },
   {
     company: "Samsung",
-    logo: "",
+    logo: "/lovable-uploads/ae619e62-847a-4da5-be26-da76e8ba61ac.png",
     title: "Software Development Intern",
     duration: "May 2023 – July 2023",
     bullets: [
@@ -54,7 +41,7 @@ export default function ExperienceCarousel() {
           className="text-center mb-16"
         >
           <h2 className="text-4xl sm:text-5xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent">
-            Experience
+            Past Experience
           </h2>
         </motion.div>
 
