@@ -19,22 +19,18 @@ const technicalProjects = [
 
 const caseStudies = [
   {
-    name: "Psychological Survey Platform",
-    impact: "Survey/calibration platform for behavioral research.",
-    tools: [<Figma key="figma" className="w-5 h-5" />],
-    caseStudyLink: "https://example.com/case-study",
-  },
-  {
     name: "Groww Campus Recruitment Deck",
     impact: "Strategic product case study for campus recruitment at Groww.",
     tools: [<Figma key="figma" className="w-5 h-5" />],
     caseStudyLink: "https://drive.google.com/file/d/1xFn2sjJgE8ww9UxzIsqiOP7rnGYxYkan/view?usp=sharing",
+    logo: "/lovable-uploads/f14548cb-bf53-4ded-a927-ddf895c3574e.png"
   },
   {
     name: "Flipkart Campus Recruitment Deck", 
     impact: "Product strategy and analysis for Flipkart recruitment process.",
     tools: [<Figma key="figma" className="w-5 h-5" />],
-    caseStudyLink: "https://drive.google.com/file/d/1yY9feLpPM6FsWUZGxvlGUb8QgxwQY6zX/view?usp=sharing",
+    caseStudyLink: "https://drive.google.com/file/d/1yY9feLpPM6FsWUZGxvlGUb8QgxQY6zX/view?usp=sharing",
+    logo: "/lovable-uploads/a107b915-9823-4083-b5d1-a5e562f21aa4.png"
   },
 ];
 
@@ -50,7 +46,17 @@ export default function ProjectsCarousel() {
           onClick={() => setSelectedProject(proj)}
           whileHover={{ y: -2 }}
         >
-          <div className="font-semibold text-slate-900 dark:text-slate-100 mb-2">{proj.name}</div>
+          <div className="flex items-center gap-3 mb-2">
+            {proj.logo && (
+              <img src={proj.logo} alt={proj.name} className="w-10 h-10 rounded-xl object-cover" />
+            )}
+            {!proj.logo && (
+              <div className="w-10 h-10 rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-sm font-bold text-slate-600 dark:text-slate-400">
+                {proj.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
+              </div>
+            )}
+            <div className="font-semibold text-slate-900 dark:text-slate-100">{proj.name}</div>
+          </div>
           <div className="flex gap-2 mb-3">{proj.tools}</div>
           <p className="text-slate-700 dark:text-slate-300 text-sm">{proj.impact}</p>
         </motion.div>
@@ -102,7 +108,17 @@ export default function ProjectsCarousel() {
                 className="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full border border-slate-200 dark:border-slate-700"
                 onClick={(e) => e.stopPropagation()}
               >
-                <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{selectedProject.name}</h3>
+                <div className="flex items-center gap-4 mb-4">
+                  {selectedProject.logo && (
+                    <img src={selectedProject.logo} alt={selectedProject.name} className="w-12 h-12 rounded-xl object-cover" />
+                  )}
+                  {!selectedProject.logo && (
+                    <div className="w-12 h-12 rounded-xl bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-sm font-bold text-slate-600 dark:text-slate-400">
+                      {selectedProject.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
+                    </div>
+                  )}
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100">{selectedProject.name}</h3>
+                </div>
                 <p className="text-slate-700 dark:text-slate-300 mb-6">{selectedProject.impact}</p>
                 
                 {selectedProject.githubLink && (

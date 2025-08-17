@@ -97,7 +97,7 @@ export default function Education() {
           </h2>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto">
+        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
           {educationData.map((edu, i) => (
             <motion.div
               key={edu.institution + edu.duration}
@@ -105,15 +105,15 @@ export default function Education() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: i * 0.1 }}
               viewport={{ once: true }}
-              className="glass-card bg-white/70 dark:bg-slate-900/70 p-6 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md cursor-pointer hover:shadow-lg transition-all"
+              className="glass-card bg-white/70 dark:bg-slate-900/70 p-4 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-md cursor-pointer hover:shadow-lg transition-all"
               onClick={() => setSelectedEducation(edu)}
               whileHover={{ y: -2 }}
             >
-              <div className="flex items-start gap-4 mb-4">
-                <img src={edu.logo} alt={edu.institution} className="w-12 h-12 rounded-xl" />
-                <div className="flex-1">
-                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">{edu.institution}</h3>
-                  <p className="text-slate-600 dark:text-slate-400 text-sm">{edu.degree}</p>
+              <div className="flex items-start gap-3 mb-3">
+                <img src={edu.logo} alt={edu.institution} className="w-8 h-8 rounded-lg flex-shrink-0" />
+                <div className="flex-1 min-w-0">
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm leading-tight">{edu.institution}</h3>
+                  <p className="text-slate-600 dark:text-slate-400 text-xs">{edu.degree}</p>
                   <p className="text-slate-500 dark:text-slate-500 text-xs">{edu.duration}</p>
                 </div>
               </div>

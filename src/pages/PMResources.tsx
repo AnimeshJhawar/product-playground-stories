@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
+import PMResourcesFooter from '../components/PMResourcesFooter';
 
 const PMResources = () => {
   const navigate = useNavigate();
@@ -12,25 +13,29 @@ const PMResources = () => {
       name: "Tata 1mg Campus Recruitment", 
       description: "Product case study for healthcare recruitment",
       driveLink: "#",
-      hoverDescription: "Healthcare product strategy presentation for campus placements"
+      hoverDescription: "Healthcare product strategy presentation for campus placements",
+      logo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png"
     },
     { 
       name: "Flipkart Campus Recruitment", 
       description: "E-commerce product management case",
-      driveLink: "#",
-      hoverDescription: "Growth and marketplace strategy for India's leading e-commerce platform"
+      driveLink: "https://drive.google.com/file/d/1yY9feLpPM6FsWUZGxvlGUb8QgxwQY6zX/view?usp=sharing",
+      hoverDescription: "Growth and marketplace strategy for India's leading e-commerce platform",
+      logo: "/lovable-uploads/a107b915-9823-4083-b5d1-a5e562f21aa4.png"
     },
     { 
       name: "Groww Campus Recruitment", 
       description: "Fintech product strategy presentation",
-      driveLink: "#",
-      hoverDescription: "Investment platform product development and user acquisition strategies"
+      driveLink: "https://drive.google.com/file/d/1xFn2sjJgE8ww9UxzIsqiOP7rnGYxYkan/view?usp=sharing",
+      hoverDescription: "Investment platform product development and user acquisition strategies",
+      logo: "/lovable-uploads/f14548cb-bf53-4ded-a927-ddf895c3574e.png"
     },
     { 
       name: "Business Mela Competition", 
       description: "Business strategy and product vision",
       driveLink: "#",
-      hoverDescription: "Comprehensive business case for startup competition"
+      hoverDescription: "Comprehensive business case for startup competition",
+      logo: "/lovable-uploads/863f0d2c-1199-46ce-ae8d-11dd50ff8c8f.png"
     },
     { 
       name: "Create 3.0", 

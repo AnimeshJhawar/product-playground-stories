@@ -63,25 +63,28 @@ const Footer = () => {
           <div className="md:col-span-2">
             <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4">Navigation</h3>
             <div className="grid grid-cols-2 gap-2">
-              {navLinks.map((link) => (
-                <button
-                  key={link.href}
-                  onClick={() => scrollToSection(link.href)}
-                  className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left transition-colors"
-                >
-                  {link.label}
-                </button>
-              ))}
-            </div>
-            
-            {/* Highlighted PM Resources */}
-            <div className="mt-6">
-              <button
-                onClick={() => scrollToSection('/pm-resources')}
-                className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-2 rounded-lg text-sm font-medium hover:shadow-lg transition-all"
-              >
-                My PM Resources Hub
-              </button>
+              <div className="space-y-2">
+                {navLinks.slice(0, 5).map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left transition-colors block"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
+              <div className="space-y-2">
+                {navLinks.slice(5).map((link) => (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm text-left transition-colors block"
+                  >
+                    {link.label}
+                  </button>
+                ))}
+              </div>
             </div>
           </div>
 
@@ -89,7 +92,7 @@ const Footer = () => {
           <div className="md:col-span-1">
             <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-4">Connect</h3>
             <div className="space-y-2">
-              {externalLinks.map((link) => (
+              {externalLinks.slice(0, 4).map((link) => (
                 <a
                   key={link.href}
                   href={link.href}
@@ -100,6 +103,27 @@ const Footer = () => {
                   {link.label}
                 </a>
               ))}
+              
+              {/* Highlighted PM Resources */}
+              <div className="mt-6">
+                <button
+                  onClick={() => scrollToSection('/pm-resources')}
+                  className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-lg text-sm font-medium hover:shadow-lg transition-all"
+                >
+                  My PM Resources Hub
+                </button>
+              </div>
+              
+              <div className="mt-3">
+                <a
+                  href={externalLinks[5].href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="block text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 text-sm transition-colors"
+                >
+                  {externalLinks[5].label}
+                </a>
+              </div>
             </div>
           </div>
         </div>
