@@ -1,12 +1,11 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation } from 'lucide-react';
+import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation, Linkedin, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
-import PMResourcesFooter from '../components/PMResourcesFooter';
 
 const PMResources = () => {
   const navigate = useNavigate();
-  const [selectedBook, setSelectedBook] = useState<any>(null);
+  const [hoveredBook, setHoveredBook] = useState<any>(null);
 
   const productDecks = [
     { 
@@ -19,16 +18,16 @@ const PMResources = () => {
     { 
       name: "Flipkart Campus Recruitment", 
       description: "E-commerce product management case",
-      driveLink: "https://drive.google.com/file/d/1yY9feLpPM6FsWUZGxvlGUb8QgxwQY6zX/view?usp=sharing",
+      driveLink: "#",
       hoverDescription: "Growth and marketplace strategy for India's leading e-commerce platform",
-      logo: "/lovable-uploads/a107b915-9823-4083-b5d1-a5e562f21aa4.png"
+      logo: "/lovable-uploads/flipkart-logo.png"
     },
     { 
       name: "Groww Campus Recruitment", 
       description: "Fintech product strategy presentation",
-      driveLink: "https://drive.google.com/file/d/1xFn2sjJgE8ww9UxzIsqiOP7rnGYxYkan/view?usp=sharing",
+      driveLink: "#",
       hoverDescription: "Investment platform product development and user acquisition strategies",
-      logo: "/lovable-uploads/f14548cb-bf53-4ded-a927-ddf895c3574e.png"
+      logo: "/lovable-uploads/groww-logo.png"
     },
     { 
       name: "Business Mela Competition", 
@@ -50,6 +49,16 @@ const PMResources = () => {
       hoverDescription: "User-centric design approach for Adobe's design challenge"
     }
   ];
+
+  const sectionOneLiners = {
+    decks: "Below are some examples of decks which I made as part of some competition or in recruiting rounds.",
+    books: "While I'm not fond of reading books, these are some which I referred to and have strong word of mouth.",
+    youtube: "The most useful content for me. I used them a lot—do look out for curated playlists instead of jumping across sources.",
+    newsletters: "A mix of deep dives and quick reads that kept me updated and inspired.",
+    communities: "These communities helped me network, discuss, and learn from real product managers.",
+    interview: "A curated set of resources and frameworks that helped me prepare for PM interviews.",
+    frameworks: "The practical guides and toolkits I still use for experimentation, analytics, and product strategy."
+  };
 
   const resourceCategories = [
     {
@@ -90,10 +99,34 @@ const PMResources = () => {
       title: "YouTube Channels",
       icon: <Video className="w-6 h-6" />,
       resources: [
-        { name: "Lenny's Podcast", type: "Video", description: "Deep dives with top PMs and founders", link: "https://www.youtube.com/@LennysPodcast", logo: "/lovable-uploads/youtube-logo.png" },
-        { name: "Product School", type: "Video", description: "PM fundamentals, case studies, and career advice", link: "https://www.youtube.com/@ProductSchool", logo: "/lovable-uploads/youtube-logo.png" },
-        { name: "Being Aakrshit", type: "Video", description: "Authentic PM stories and career insights", link: "https://www.youtube.com/@beingaakrshit3036", logo: "/lovable-uploads/youtube-logo.png" },
-        { name: "Product Manager HQ", type: "Video", description: "Interview prep, frameworks, and real PM experiences", link: "#", logo: "/lovable-uploads/youtube-logo.png" }
+        { 
+          name: "Lenny's Podcast", 
+          type: "Video", 
+          description: "Deep dives with top PMs and founders", 
+          link: "https://www.youtube.com/@LennysPodcast", 
+          logo: "/lovable-uploads/youtube-logo.png" 
+        },
+        { 
+          name: "Product School", 
+          type: "Video", 
+          description: "PM fundamentals, case studies, and career advice", 
+          link: "https://www.youtube.com/@ProductSchool", 
+          logo: "/lovable-uploads/youtube-logo.png" 
+        },
+        { 
+          name: "Being Aakrshit", 
+          type: "Video", 
+          description: "Authentic PM stories and career insights", 
+          link: "https://www.youtube.com/@beingaakrshit3036", 
+          logo: "/lovable-uploads/youtube-logo.png" 
+        },
+        { 
+          name: "Product Manager HQ", 
+          type: "Video", 
+          description: "Interview prep, frameworks, and real PM experiences", 
+          link: "#", 
+          logo: "/lovable-uploads/youtube-logo.png" 
+        }
       ]
     },
     {
@@ -139,7 +172,7 @@ const PMResources = () => {
   ];
 
   const navigationItems = [
-    { label: 'My Product Decks', href: '#decks' },
+    { label: 'Product Decks', href: '#decks' },
     { label: 'Essential Books', href: '#essentialbooks' },
     { label: 'YouTube Channels', href: '#youtubechannels' },
     { label: 'Newsletters & Blogs', href: '#newslettersblogs' },
@@ -157,49 +190,83 @@ const PMResources = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-purple-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
-      {/* Header */}
-      <div className="container mx-auto px-4 py-8">
-        <motion.button
-          onClick={() => navigate('/')}
-          initial={{ opacity: 0, x: -20 }}
-          animate={{ opacity: 1, x: 0 }}
-          className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors mb-8"
-        >
-          <ArrowLeft size={20} />
-          My Portfolio
-        </motion.button>
+      {/* Glassmorphism Header */}
+      <motion.header 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="fixed top-0 w-full z-50 glass-navbar"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="flex justify-between items-center h-16">
+            <motion.div 
+              whileHover={{ scale: 1.05 }}
+              onClick={() => navigate('/')}
+              className="text-xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent cursor-pointer"
+            >
+              Animesh Jhawar
+            </motion.div>
+
+            {/* Desktop Navigation */}
+            <nav className="hidden lg:flex items-center space-x-6">
+              {navigationItems.map((item, index) => (
+                <motion.button
+                  key={item.href}
+                  onClick={() => scrollToSection(item.href)}
+                  initial={{ opacity: 0, y: -20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: index * 0.1 + 0.5 }}
+                  className="nav-link text-slate-700 dark:text-slate-300 hover:text-blue-600 dark:hover:text-blue-400 font-medium text-xs"
+                >
+                  {item.label}
+                </motion.button>
+              ))}
+            </nav>
+          </div>
+        </div>
+      </motion.header>
+
+      {/* Hero Section with Background Metrics */}
+      <section className="w-full min-h-[70vh] pt-20 pb-10 flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
+        {/* Background metrics/graphics */}
+        <div className="absolute inset-0 opacity-10 dark:opacity-5">
+          <div className="absolute top-20 left-10 text-4xl font-bold text-blue-500">92% MAU</div>
+          <div className="absolute top-32 right-20 text-3xl font-bold text-purple-500">15% CVR</div>
+          <div className="absolute bottom-40 left-20 text-2xl font-bold text-green-500">A/B Tests</div>
+          <div className="absolute bottom-20 right-10 text-3xl font-bold text-orange-500">1M+ Users</div>
+          <div className="absolute top-40 left-1/2 text-2xl font-bold text-pink-500">Product Analytics</div>
+          <div className="absolute top-60 right-1/3 text-xl font-bold text-cyan-500">Growth Metrics</div>
+        </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-8"
+          className="flex flex-col items-center w-full"
         >
-          <h1 className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent">
+          <h1 className="text-4xl sm:text-6xl font-bold mb-6 bg-gradient-to-r from-slate-900 to-blue-800 dark:from-slate-100 dark:to-blue-200 bg-clip-text text-transparent text-center">
             My PM Resources
           </h1>
           
           <div className="glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-2xl p-6 max-w-4xl mx-auto border border-slate-200 dark:border-slate-700 mb-8">
-            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed">
+            <p className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed text-center">
               Hey! I am Animesh. I am currently working as an Associate Product Manager at Tata 1mg, where I contribute to building impactful healthcare solutions. I completed my B.Tech in Electrical Engineering from IIT Delhi. Passionate about the dynamic world of product management, I have curated a bunch of resources that I have used personally and am still using some of them which might help you.
             </p>
           </div>
 
-          {/* Sticky Navigation */}
-          <div className="sticky top-4 z-30 glass-navbar bg-white/90 dark:bg-slate-900/90 backdrop-blur-xl rounded-xl border border-slate-200 dark:border-slate-700 p-4 mb-8 shadow-lg">
-            <nav className="flex flex-wrap justify-center gap-2">
-              {navigationItems.map((item) => (
-                <button
-                  key={item.href}
-                  onClick={() => scrollToSection(item.href)}
-                  className="px-3 py-1 text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/20 rounded-lg transition-all duration-200"
-                >
-                  {item.label}
-                </button>
-              ))}
-            </nav>
-          </div>
+          {/* Back to Portfolio Button */}
+          <motion.button
+            onClick={() => navigate('/')}
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            className="flex items-center gap-2 text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 transition-colors mb-8 self-start ml-4"
+          >
+            <ArrowLeft size={20} />
+            Back to Portfolio
+          </motion.button>
         </motion.div>
+      </section>
+
+      <div className="container mx-auto px-4 py-8">
 
         {/* My Product Decks Section */}
         <section id="decks" className="mb-16">
@@ -214,6 +281,11 @@ const PMResources = () => {
               <Presentation className="w-8 h-8" />
               My Product Decks
             </h2>
+            <div className="glass-card bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 max-w-2xl mx-auto border border-slate-200/50 dark:border-slate-700/50">
+              <p className="text-slate-600 dark:text-slate-400 text-sm">
+                {sectionOneLiners.decks}
+              </p>
+            </div>
           </motion.div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
@@ -257,38 +329,62 @@ const PMResources = () => {
 
         {/* Resource Categories */}
         <div className="space-y-16">
-          {resourceCategories.map((category, categoryIndex) => (
-            <section key={category.title} id={category.title.toLowerCase().replace(/[^a-z0-9]/g, '')} className="mb-16">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6 }}
-                viewport={{ once: true }}
-                className="text-center mb-8"
-              >
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center justify-center gap-3">
-                  {category.icon}
-                  {category.title}
-                </h2>
-              </motion.div>
+          {resourceCategories.map((category, categoryIndex) => {
+            const sectionKey = category.title.toLowerCase().replace(/[^a-z0-9]/g, '');
+            const oneLiners = {
+              'essentialbooks': sectionOneLiners.books,
+              'youtubechannels': sectionOneLiners.youtube,
+              'newslettersblogs': sectionOneLiners.newsletters,
+              'communities': sectionOneLiners.communities,
+              'interviewprep': sectionOneLiners.interview,
+              'frameworkstools': sectionOneLiners.frameworks
+            };
+            
+            return (
+              <section key={category.title} id={sectionKey} className="mb-16">
+                <motion.div
+                  initial={{ opacity: 0, y: 20 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.6 }}
+                  viewport={{ once: true }}
+                  className="text-center mb-8"
+                >
+                  <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center justify-center gap-3">
+                    {category.icon}
+                    {category.title}
+                  </h2>
+                  <div className="glass-card bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 max-w-2xl mx-auto border border-slate-200/50 dark:border-slate-700/50">
+                    <p className="text-slate-600 dark:text-slate-400 text-sm">
+                      {oneLiners[sectionKey] || ''}
+                    </p>
+                  </div>
+                </motion.div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                {category.resources.map((resource, index) => (
-                  <motion.div
-                    key={resource.name}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    onClick={() => {
-                      if (category.title === "Essential Books" && resource.myLearning) {
-                        setSelectedBook(resource);
-                      } else if (resource.link && resource.link !== '#') {
-                        window.open(resource.link, '_blank');
-                      }
-                    }}
-                    className="group glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-                  >
+                <div className="grid md:grid-cols-2 gap-6">
+                  {category.resources.map((resource, index) => (
+                    <motion.div
+                      key={resource.name}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      transition={{ duration: 0.6, delay: index * 0.1 }}
+                      viewport={{ once: true }}
+                      onMouseEnter={() => {
+                        if (category.title === "Essential Books" && resource.myLearning) {
+                          setHoveredBook(resource);
+                        }
+                      }}
+                      onMouseLeave={() => {
+                        if (category.title === "Essential Books") {
+                          setHoveredBook(null);
+                        }
+                      }}
+                      onClick={() => {
+                        if (resource.link && resource.link !== '#') {
+                          window.open(resource.link, '_blank');
+                        }
+                      }}
+                      className="group glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer relative"
+                    >
                     <div className="flex items-start justify-between mb-3">
                       <div className="flex items-start gap-3 flex-1">
                         {resource.logo && (
@@ -312,55 +408,70 @@ const PMResources = () => {
                         <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" />
                       )}
                     </div>
-                    <p className="text-slate-600 dark:text-slate-300 text-sm">
-                      {resource.description}
-                    </p>
-                  </motion.div>
-                ))}
-              </div>
-            </section>
-          ))}
+                      <p className="text-slate-600 dark:text-slate-300 text-sm">
+                        {resource.description}
+                      </p>
+                      
+                      {/* Hover tooltip for Essential Books */}
+                      {category.title === "Essential Books" && hoveredBook?.name === resource.name && resource.myLearning && (
+                        <motion.div
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          className="absolute top-full left-0 right-0 mt-2 p-4 glass-card bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg z-10"
+                        >
+                          <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">My Key Learnings:</h4>
+                          <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{resource.myLearning}</p>
+                        </motion.div>
+                      )}
+                    </motion.div>
+                  ))}
+                </div>
+              </section>
+            );
+          })}
         </div>
       </div>
 
       {/* Footer */}
-      <PMResourcesFooter />
-
-      {/* Book Learning Modal */}
-      {selectedBook && (
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4"
-          onClick={() => setSelectedBook(null)}
-        >
-          <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            exit={{ scale: 0.9, opacity: 0 }}
-            className="bg-white dark:bg-slate-800 p-8 rounded-3xl max-w-md w-full border border-slate-200 dark:border-slate-700"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">{selectedBook.name}</h3>
-            <div className="mb-4">
-              <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">My Key Learnings:</h4>
-              <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">{selectedBook.myLearning}</p>
-            </div>
-            {selectedBook.link && selectedBook.link !== '#' && (
-              <a
-                href={selectedBook.link}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition-colors"
-              >
-                <ExternalLink size={16} />
-                Get this book
-              </a>
-            )}
-          </motion.div>
-        </motion.div>
-      )}
+      <footer className="bg-slate-50 dark:bg-slate-800 py-8 mt-16">
+        <div className="container mx-auto px-4 text-center">
+          <div className="glass-card bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto border border-slate-200/50 dark:border-slate-700/50 mb-6">
+            <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
+              Want to know a bit more about me? Here's my portfolio link.
+            </p>
+            <motion.button
+              onClick={() => navigate('/')}
+              whileHover={{ scale: 1.05 }}
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all"
+            >
+              View My Portfolio
+            </motion.button>
+          </div>
+          
+          <div className="flex items-center justify-center gap-6 mb-4">
+            <a
+              href="https://linkedin.com/in/animesh-jhawar"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-slate-500 hover:text-blue-600 transition-colors"
+              aria-label="LinkedIn"
+            >
+              <Linkedin size={20} />
+            </a>
+            <a
+              href="mailto:animeshjhawar@gmail.com"
+              className="text-slate-500 hover:text-blue-600 transition-colors"
+              aria-label="Email"
+            >
+              <Mail size={20} />
+            </a>
+          </div>
+          
+          <p className="text-slate-400 text-sm">
+            © 2025 Animesh Jhawar™ - All rights reserved
+          </p>
+        </div>
+      </footer>
     </div>
   );
 };

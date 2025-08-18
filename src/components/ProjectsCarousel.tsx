@@ -19,6 +19,20 @@ const technicalProjects = [
 
 const caseStudies = [
   {
+    name: "Tata 1mg Personalization",
+    impact: "Enhanced personalization for users on the 1mg app to improve user experience and engagement.",
+    tools: [<Figma key="figma" className="w-5 h-5" />],
+    caseStudyLink: "#",
+    logo: "/src/assets/1mg-logo.png"
+  },
+  {
+    name: "Business Mela Competition by Recruit",
+    impact: "Business opportunities analysis for Medium Small Scale Enterprises.",
+    tools: [<Figma key="figma" className="w-5 h-5" />],
+    caseStudyLink: "#",
+    logo: "/lovable-uploads/recruit-logo.png"
+  },
+  {
     name: "Groww Campus Recruitment Deck",
     impact: "Strategic product case study for campus recruitment at Groww.",
     tools: [<Figma key="figma" className="w-5 h-5" />],
