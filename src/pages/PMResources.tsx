@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation, Linkedin, Mail, Lightbulb, Brain, Trophy, Star, MessageSquare, Zap, Rocket } from 'lucide-react';
+import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation, Linkedin, Mail, Lightbulb, Brain, Trophy, Star, MessageSquare, Zap, Rocket, Search, BarChart, TrendingDown, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const PMResources = () => {
@@ -11,21 +11,41 @@ const PMResources = () => {
   const pmJourneySteps = [
     {
       id: 'intro-pm',
-      title: 'Intro to Product Management',
+      title: 'Step 1: Intro to Product Management',
       subtitle: 'Understand what a PM actually does on a day-to-day basis.',
       icon: <Lightbulb className="w-6 h-6" />,
       description: "A Product Manager's role goes beyond \"just building features.\" It's about discovery, execution, analysis, and managing stakeholders.",
-      content: [
-        "Discovery → Identifying user problems, market gaps, and crafting value propositions.",
-        "Execution → Collaborating with design for wireframes, grooming stories with engineers, aligning tech requirements, setting up data pipelines, and ensuring delivery.",
-        "Analysis → Running A/B tests, validating impact metrics, reviewing cohorts, deciding rollouts.",
-        "Stakeholder Management → Balancing inputs from business, tech, and users, justifying costs vs. value, and driving prioritization."
+      cards: [
+        {
+          title: "Discovery",
+          description: "Identifying user problems, market gaps, and crafting value propositions.",
+          icon: <Search className="w-8 h-8" />,
+          hoverTooltip: "Research user needs, analyze market opportunities, validate assumptions through interviews and data analysis."
+        },
+        {
+          title: "Execution",
+          description: "Collaborating with design for wireframes, grooming stories with engineers, aligning tech requirements.",
+          icon: <Rocket className="w-8 h-8" />,
+          hoverTooltip: "Translate strategy into actionable plans, coordinate cross-functional teams, manage delivery timelines."
+        },
+        {
+          title: "Analysis",
+          description: "Running A/B tests, validating impact metrics, reviewing cohorts, deciding rollouts.",
+          icon: <BarChart className="w-8 h-8" />,
+          hoverTooltip: "Measure product performance, design experiments, analyze user behavior, make data-driven decisions."
+        },
+        {
+          title: "Stakeholder Management",
+          description: "Balancing inputs from business, tech, and users, justifying costs vs. value.",
+          icon: <Users className="w-8 h-8" />,
+          hoverTooltip: "Align diverse stakeholder expectations, communicate product vision, manage competing priorities."
+        }
       ],
       footer: "This stage is about developing a PM mindset — thinking holistically about both the why and the how."
     },
     {
       id: 'foundations',
-      title: 'Foundations',
+      title: 'Step 2: Foundations',
       subtitle: 'Start with core PM thinking and frameworks to structure your approach.',
       icon: <Brain className="w-6 h-6" />,
       description: "Build the foundation with structured programs and practical learning:",
@@ -59,7 +79,7 @@ const PMResources = () => {
     },
     {
       id: 'case-studies',
-      title: 'Case Studies & Examples',
+      title: 'Step 3: Case Studies & Examples',
       subtitle: 'See how frameworks apply in real-world problem solving.',
       icon: <Trophy className="w-6 h-6" />,
       description: "Learn from practical applications through recruitment and competition case studies:",
@@ -133,7 +153,7 @@ const PMResources = () => {
     },
     {
       id: 'frameworks-tools',
-      title: 'Frameworks & Tools',
+      title: 'Step 4: Frameworks & Tools',
       subtitle: 'Get practical with frameworks and toolkits for structured thinking.',
       icon: <Zap className="w-6 h-6" />,
       description: "Hands-on frameworks and toolkits that you can apply directly in interviews and projects:",
@@ -167,7 +187,7 @@ const PMResources = () => {
     },
     {
       id: 'staying-updated',
-      title: 'Staying Updated',
+      title: 'Step 5: Staying Updated',
       subtitle: 'Keep your PM instincts sharp by following trends and insights regularly.',
       icon: <TrendingUp className="w-6 h-6" />,
       description: "Being a PM means staying close to trends, new tools, and community discussions. These are my go-to subscriptions:",
@@ -201,7 +221,7 @@ const PMResources = () => {
     },
     {
       id: 'interview-prep',
-      title: 'Interview Preparation',
+      title: 'Step 6: Interview Preparation',
       subtitle: 'Practice structured problem-solving across the three common interview stages.',
       icon: <Target className="w-6 h-6" />,
       description: "Interviews test both thinking and execution structure:",
@@ -247,7 +267,7 @@ const PMResources = () => {
     },
     {
       id: 'books-deep-dives',
-      title: 'Books & Deep Dives',
+      title: 'Step 7: Books & Deep Dives',
       subtitle: 'Go beyond basics with foundational PM reads.',
       icon: <BookOpen className="w-6 h-6" />,
       description: "Books that shaped my thinking and gave me frameworks to lean on:",
@@ -294,7 +314,7 @@ const PMResources = () => {
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      const navbarHeight = 80; // Approximate navbar height
+      const navbarHeight = 90; // Fixed navbar height to align section titles properly
       const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({ 
         top: elementPosition - navbarHeight, 
@@ -312,8 +332,10 @@ const PMResources = () => {
       onMouseEnter={() => setHoveredResource(resource)}
       onMouseLeave={() => setHoveredResource(null)}
     >
-      <div className="glass-card p-6 rounded-xl h-full transition-all duration-300 hover:scale-105 cursor-pointer"
-           onClick={() => resource.link && window.open(resource.link, '_blank')}>
+      <div 
+        className="glass-card p-6 rounded-xl h-full transition-all duration-300 hover:scale-105 cursor-pointer"
+        onClick={() => resource.link && window.open(resource.link, '_blank')}
+      >
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center gap-3">
             {showLogo && resource.logo && (
@@ -330,16 +352,56 @@ const PMResources = () => {
         </p>
       </div>
       
-      {/* Hover Tooltip */}
+      {/* Fixed Position Hover Tooltip */}
       {hoveredResource === resource && resource.hoverTooltip && (
         <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: 10 }}
-          className="absolute z-50 top-full left-0 right-0 mt-2 p-4 bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm text-white text-sm rounded-lg shadow-xl"
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          className="absolute z-[100] top-0 left-0 right-0 bottom-0 pointer-events-none"
         >
-          {resource.hoverTooltip}
-          <div className="absolute -top-2 left-4 w-4 h-4 bg-slate-900/95 dark:bg-slate-800/95 rotate-45" />
+          <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm text-white text-sm rounded-xl p-4 shadow-2xl border border-white/10 flex items-center justify-center">
+            <p className="text-center leading-relaxed">{resource.hoverTooltip}</p>
+          </div>
+        </motion.div>
+      )}
+    </motion.div>
+  );
+
+  const StepCard = ({ card, index }: any) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="relative group"
+      onMouseEnter={() => setHoveredResource(card)}
+      onMouseLeave={() => setHoveredResource(null)}
+    >
+      <div className="glass-card p-6 rounded-xl h-full transition-all duration-300 hover:scale-105">
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4 text-blue-600 dark:text-blue-400">
+            {card.icon}
+          </div>
+          <h3 className="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2">
+            {card.title}
+          </h3>
+          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+            {card.description}
+          </p>
+        </div>
+      </div>
+      
+      {/* Fixed Position Hover Tooltip */}
+      {hoveredResource === card && card.hoverTooltip && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.95 }}
+          className="absolute z-[100] top-0 left-0 right-0 bottom-0 pointer-events-none"
+        >
+          <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm text-white text-sm rounded-xl p-4 shadow-2xl border border-white/10 flex items-center justify-center">
+            <p className="text-center leading-relaxed">{card.hoverTooltip}</p>
+          </div>
         </motion.div>
       )}
     </motion.div>
@@ -399,7 +461,7 @@ const PMResources = () => {
       </div>
 
       {/* Hero Section with Background Metrics */}
-      <section className="w-full min-h-[60vh] pb-6 flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
+      <section className="w-full min-h-[50vh] pb-2 flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
         {/* Background metrics/graphics */}
         <div className="absolute inset-0 opacity-10 dark:opacity-5">
           <div className="absolute top-20 left-10 text-4xl font-bold text-blue-500">92% MAU</div>
@@ -472,7 +534,7 @@ const PMResources = () => {
       </section>
 
       {/* PM Journey Steps */}
-      <div className="container mx-auto px-4 space-y-16">
+      <div className="container mx-auto px-4 space-y-20">
         {pmJourneySteps.map((step, stepIndex) => (
           <motion.section
             key={step.id}
@@ -483,42 +545,48 @@ const PMResources = () => {
             transition={{ duration: 0.6, delay: stepIndex * 0.1 }}
             className="relative"
           >
-            {/* Step Header */}
-            <div className="flex items-center gap-4 mb-6">
-              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-bold">
-                {stepIndex + 1}
-              </div>
-              <div>
-                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
-                  {step.title}
-                </h2>
-                <p className="text-slate-600 dark:text-slate-400 text-lg">
-                  {step.subtitle}
-                </p>
-              </div>
+            {/* Section Title & Tagline - Center Aligned */}
+            <div className="text-center mb-12">
+              <h2 className="text-4xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+                {step.title}
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 text-xl max-w-3xl mx-auto">
+                {step.subtitle}
+              </p>
             </div>
 
-            {/* Step Description */}
-            <div className="mb-8">
-              <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-4">
+            {/* Step Description - Center Aligned */}
+            <div className="text-center mb-12">
+              <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed max-w-4xl mx-auto">
                 {step.description}
               </p>
-              
-              {/* Content List */}
-              {step.content && (
-                <ul className="space-y-2 mb-6">
+            </div>
+
+            {/* Step 1 Special Cards */}
+            {step.cards && (
+              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+                {step.cards.map((card, index) => (
+                  <StepCard key={index} card={card} index={index} />
+                ))}
+              </div>
+            )}
+
+            {/* Content List for Interview Prep */}
+            {step.content && !step.cards && (
+              <div className="max-w-4xl mx-auto mb-12">
+                <ul className="space-y-3">
                   {step.content.map((item, index) => (
-                    <li key={index} className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    <li key={index} className="text-slate-600 dark:text-slate-400 leading-relaxed text-center">
                       • {item}
                     </li>
                   ))}
                 </ul>
-              )}
-            </div>
+              </div>
+            )}
 
             {/* Resources Grid */}
             {step.resources && (
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
                 {step.resources.map((resource, index) => (
                   <ResourceCard key={index} resource={resource} index={index} />
                 ))}
@@ -527,15 +595,17 @@ const PMResources = () => {
 
             {/* Subsections (for Case Studies) */}
             {step.subsections && (
-              <div className="space-y-12">
+              <div className="space-y-16">
                 {step.subsections.map((subsection, subIndex) => (
                   <div key={subIndex}>
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
-                      {subsection.title}
-                    </h3>
-                    <p className="text-slate-600 dark:text-slate-400 mb-6">
-                      {subsection.subtitle}
-                    </p>
+                    <div className="text-center mb-8">
+                      <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+                        {subsection.title}
+                      </h3>
+                      <p className="text-slate-600 dark:text-slate-400 max-w-3xl mx-auto">
+                        {subsection.subtitle}
+                      </p>
+                    </div>
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                       {subsection.resources.map((resource, index) => (
                         <ResourceCard key={index} resource={resource} index={index} showLogo />
@@ -546,11 +616,13 @@ const PMResources = () => {
               </div>
             )}
 
-            {/* Step Footer */}
-            <div className="mt-8 p-4 bg-blue-50 dark:bg-slate-800/50 rounded-lg">
-              <p className="text-slate-700 dark:text-slate-300 italic">
-                {step.footer}
-              </p>
+            {/* Section Footer - Center Aligned */}
+            <div className="mt-12 text-center">
+              <div className="max-w-4xl mx-auto p-6 bg-blue-50 dark:bg-slate-800/50 rounded-xl">
+                <p className="text-slate-700 dark:text-slate-300 italic text-lg">
+                  {step.footer}
+                </p>
+              </div>
             </div>
           </motion.section>
         ))}
@@ -565,7 +637,7 @@ const PMResources = () => {
             viewport={{ once: true }}
             className="mb-8"
           >
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4 text-center">
               Want to know more about me?
             </h3>
             <motion.button
@@ -578,8 +650,8 @@ const PMResources = () => {
             </motion.button>
           </motion.div>
           
-          <div className="border-t border-slate-200 dark:border-slate-700 pt-8">
-            <p className="text-slate-600 dark:text-slate-400 mb-4">
+          <div className="border-t border-slate-200 dark:border-slate-700 pt-8 text-center">
+            <p className="text-slate-600 dark:text-slate-400 mb-4 text-center">
               © 2025 Animesh Jhawar™ - All rights reserved
             </p>
             <div className="flex justify-center gap-6">
