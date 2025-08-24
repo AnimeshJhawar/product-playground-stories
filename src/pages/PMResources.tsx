@@ -1,304 +1,349 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation, Linkedin, Mail } from 'lucide-react';
+import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation, Linkedin, Mail, Lightbulb, Brain, Trophy, Star, MessageSquare, Zap, Rocket } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
 const PMResources = () => {
   const navigate = useNavigate();
   const [hoveredResource, setHoveredResource] = useState<any>(null);
 
-  const productDecks = [
-    { 
-      name: "Tata 1mg Campus Recruitment", 
-      description: "Product case study for healthcare recruitment",
-      driveLink: "#",
-      hoverDescription: "Healthcare product strategy presentation for campus placements - focused on user acquisition and retention strategies for healthcare platform",
-      logo: "/src/assets/1mg-logo.png"
-    },
-    { 
-      name: "Flipkart Campus Recruitment", 
-      description: "E-commerce product management case",
-      driveLink: "#",
-      hoverDescription: "Growth and marketplace strategy for India's leading e-commerce platform - analyzed supply chain optimization and seller onboarding",
-      logo: "/lovable-uploads/flipkart-logo.png"
-    },
-    { 
-      name: "Groww Campus Recruitment", 
-      description: "Fintech product strategy presentation",
-      driveLink: "#",
-      hoverDescription: "Investment platform product development and user acquisition strategies - focused on democratizing investing for Indian users",
-      logo: "/lovable-uploads/groww-logo.png"
-    },
-    { 
-      name: "Business Mela Competition", 
-      description: "Business strategy and product vision",
-      driveLink: "#",
-      hoverDescription: "Comprehensive business case for startup competition - developed go-to-market strategy and product roadmap for SME solutions",
-      logo: "/lovable-uploads/863f0d2c-1199-46ce-ae8d-11dd50ff8c8f.png"
-    },
-    { 
-      name: "Create 3.0", 
-      description: "Innovation challenge presentation",
-      driveLink: "#",
-      hoverDescription: "Creative problem-solving approach for innovation challenges - designed user-centric solutions for emerging technology problems"
-    },
-    { 
-      name: "Tryst Adobe Designathon", 
-      description: "Design thinking and product strategy",
-      driveLink: "#",
-      hoverDescription: "User-centric design approach for Adobe's design challenge - integrated design thinking with product strategy for creative tools"
-    }
-  ];
-
-  const sectionOneLiners = {
-    decks: "Below are some examples of decks which I made as part of some competition or in recruiting rounds.",
-    books: "While I'm not fond of reading books, these are some which I referred to and have strong word of mouth.",
-    youtube: "The most useful content for me. I used them a lot—do look out for curated playlists instead of jumping across sources.",
-    newsletters: "A mix of deep dives and quick reads that kept me updated and inspired.",
-    communities: "These communities helped me network, discuss, and learn from real product managers.",
-    interview: "A curated set of resources and frameworks that helped me prepare for PM interviews.",
-    frameworks: "The practical guides and toolkits I still use for experimentation, analytics, and product strategy."
-  };
-
-  const resourceCategories = [
+  // Step-wise PM Journey Resources
+  const pmJourneySteps = [
     {
-      title: "Essential Books",
-      icon: <BookOpen className="w-6 h-6" />,
+      id: 'intro-pm',
+      title: 'Intro to Product Management',
+      subtitle: 'Understand what a PM actually does on a day-to-day basis.',
+      icon: <Lightbulb className="w-6 h-6" />,
+      description: "A Product Manager's role goes beyond \"just building features.\" It's about discovery, execution, analysis, and managing stakeholders.",
+      content: [
+        "Discovery → Identifying user problems, market gaps, and crafting value propositions.",
+        "Execution → Collaborating with design for wireframes, grooming stories with engineers, aligning tech requirements, setting up data pipelines, and ensuring delivery.",
+        "Analysis → Running A/B tests, validating impact metrics, reviewing cohorts, deciding rollouts.",
+        "Stakeholder Management → Balancing inputs from business, tech, and users, justifying costs vs. value, and driving prioritization."
+      ],
+      footer: "This stage is about developing a PM mindset — thinking holistically about both the why and the how."
+    },
+    {
+      id: 'foundations',
+      title: 'Foundations',
+      subtitle: 'Start with core PM thinking and frameworks to structure your approach.',
+      icon: <Brain className="w-6 h-6" />,
+      description: "Build the foundation with structured programs and practical learning:",
       resources: [
         { 
-          name: "Inspired by Marty Cagan", 
-          type: "Book", 
-          description: "The Bible of product management - strategy, discovery, and delivery", 
+          name: "The PM School", 
+          description: "structured modules that introduce product fundamentals",
           link: "#",
-          myLearning: "This book taught me the fundamental difference between feature teams and product teams. The concept of continuous discovery and the importance of outcome-based roadmaps completely changed how I approach product strategy.",
-          hoverTooltip: "Essential read for understanding modern product management practices. Covers discovery, delivery, and organizational structure for product teams."
+          hoverTooltip: "Comprehensive PM education with structured modules covering discovery, delivery, and growth frameworks."
         },
         { 
-          name: "The Lean Startup by Eric Ries", 
-          type: "Book", 
-          description: "Building products through validated learning and experimentation", 
+          name: "ProductMonk", 
+          description: "blog & case studies explaining frameworks in real-world Indian context",
           link: "#",
-          myLearning: "The Build-Measure-Learn cycle became my go-to framework for product development. It helped me understand the importance of rapid iteration and customer validation before scaling features.",
-          hoverTooltip: "Foundation of lean methodology for startups. Focuses on validated learning and pivot strategies for product development."
+          hoverTooltip: "Indian PM community with practical case studies and frameworks tailored for the Indian market context."
         },
         { 
-          name: "Hooked by Nir Eyal", 
-          type: "Book", 
-          description: "Psychology of habit-forming products and user engagement", 
+          name: "Medium PM Basics", 
+          description: "articles on PM basics (CIRCLES, JTBD)",
+          link: "https://medium.com/@dee.busari/product-management-fundamentals-b4328a8e8a4e",
+          hoverTooltip: "Essential PM fundamentals including CIRCLES framework and Jobs-to-be-Done methodology."
+        },
+        { 
+          name: "McKinsey Forward", 
+          description: "structured problem-solving and analytical storytelling",
           link: "#",
-          myLearning: "Understanding the Hook Model (Trigger-Action-Reward-Investment) was crucial for building engaging user experiences at 1mg. It helped me design features that create genuine user habits.",
-          hoverTooltip: "Deep dive into behavioral psychology for product design. Explains the four-step process for building habit-forming products."
-        },
-        { 
-          name: "Escaping the Build Trap by Melissa Perri", 
-          type: "Book", 
-          description: "Building products that create value, not just features", 
-          link: "#",
-          myLearning: "This book helped me shift from output-focused to outcome-focused thinking. The product kata framework is something I use regularly for continuous improvement.",
-          hoverTooltip: "Focuses on outcome-based product management. Great for understanding product strategy and avoiding feature factory mentality."
+          hoverTooltip: "Professional development program focusing on structured thinking and analytical frameworks for business problems."
         }
-      ]
+      ],
+      footer: "This stage ensures you know the frameworks and language that PMs use every day."
     },
     {
-      title: "YouTube Channels",
-      icon: <Video className="w-6 h-6" />,
-      resources: [
-        { 
-          name: "Lenny's Podcast", 
-          type: "Video", 
-          description: "Deep dives with top PMs and founders", 
-          link: "https://www.youtube.com/@LennysPodcast", 
-          logo: "/lovable-uploads/youtube-logo.png",
-          hoverTooltip: "Premium content with industry leaders. Deep tactical advice from experienced PMs at companies like Airbnb, Uber, and Stripe."
+      id: 'case-studies',
+      title: 'Case Studies & Examples',
+      subtitle: 'See how frameworks apply in real-world problem solving.',
+      icon: <Trophy className="w-6 h-6" />,
+      description: "Learn from practical applications through recruitment and competition case studies:",
+      subsections: [
+        {
+          title: "Recruitment Decks",
+          subtitle: "Campus recruitment decks to understand how PM cases are solved during placement processes:",
+          resources: [
+            { 
+              name: "Flipkart", 
+              description: "Made for campus recruitment",
+              link: "#",
+              logo: "/lovable-uploads/flipkart-logo.png",
+              hoverTooltip: "E-commerce marketplace strategy and growth framework designed for campus recruitment process."
+            },
+            { 
+              name: "Groww", 
+              description: "Made for campus recruitment",
+              link: "#",
+              logo: "/lovable-uploads/groww-logo.png",
+              hoverTooltip: "Fintech product strategy and user acquisition approach for investment platform recruitment case."
+            },
+            { 
+              name: "Tata 1mg", 
+              description: "Made for campus recruitment",
+              link: "https://drive.google.com/file/d/16_l4Ec_nga0X_BlZDzW3lCQDJR_4jAdu/view?usp=sharing",
+              logo: "/src/assets/1mg-logo.png",
+              hoverTooltip: "Healthcare platform product strategy focusing on user personalization and retention for recruitment."
+            }
+          ]
         },
-        { 
-          name: "Product School", 
-          type: "Video", 
-          description: "PM fundamentals, case studies, and career advice", 
-          link: "https://www.youtube.com/@ProductSchool", 
-          logo: "/lovable-uploads/youtube-logo.png",
-          hoverTooltip: "Comprehensive PM education platform. Features interviews with PMs from FAANG companies and structured learning paths."
-        },
-        { 
-          name: "Being Aakrshit", 
-          type: "Video", 
-          description: "Authentic PM stories and career insights", 
-          link: "https://www.youtube.com/@beingaakrshit3036", 
-          logo: "/lovable-uploads/youtube-logo.png",
-          hoverTooltip: "Indian PM perspective with authentic career stories. Great for understanding PM roles in Indian tech ecosystem."
-        },
-        { 
-          name: "Product Manager HQ", 
-          type: "Video", 
-          description: "Interview prep, frameworks, and real PM experiences", 
-          link: "#", 
-          logo: "/lovable-uploads/youtube-logo.png",
-          hoverTooltip: "Focused on PM interview preparation and career advancement. Includes mock interviews and framework explanations."
+        {
+          title: "Case Study Competitions",
+          subtitle: "Winning & finalist decks from product competitions — showcasing structured approaches:",
+          resources: [
+            { 
+              name: "Recruit Business Mela Contest", 
+              description: "Business opportunities strategy",
+              link: "https://drive.google.com/file/d/1XZP5LCEp8Geah5a-VYL3GJEx6z_F7Cen/view?usp=sharing",
+              logo: "/lovable-uploads/recruit-logo.png",
+              hoverTooltip: "SME business opportunities analysis and go-to-market strategy for Recruit's business competition."
+            },
+            { 
+              name: "Experentia – Modern Day CRIME Tracking (Winner)", 
+              description: "Crime tracking solution design",
+              link: "https://drive.google.com/file/d/1ssoMcYYs6RDaQfW7Bn4R_jnYzJaFUvFp/view?usp=sharing",
+              hoverTooltip: "Winning solution for crime tracking system - comprehensive product strategy and implementation roadmap."
+            },
+            { 
+              name: "Create 3.0 – Doordarshan App, Virtual Tourism (Winner)", 
+              description: "Virtual tourism platform design",
+              link: "https://drive.google.com/file/d/1toW4F25mrwbfbmmlZxGSUzBZvMwCsNq0/view?usp=sharing",
+              hoverTooltip: "First place virtual tourism solution for Doordarshan - innovative approach to digital content consumption."
+            },
+            { 
+              name: "Create 2.0 – Samurai Clan Visualization (Second Runner Up)", 
+              description: "Data visualization solution",
+              link: "https://drive.google.com/file/d/1Nvk2NnM0BzlbA0Ysl8Q4Au0Dns7IW85j/view?usp=sharing",
+              hoverTooltip: "Runner-up data visualization project with innovative approach to historical data presentation."
+            },
+            { 
+              name: "Adobe Designathon – Sustainable Consumption (Second Runner Up)", 
+              description: "Sustainable design solution",
+              link: "https://drive.google.com/file/d/1JMmDS9iz32MYrXoMifMoSqRt28sSH-Ra/view?usp=sharing",
+              hoverTooltip: "Runner-up sustainability-focused design solution for Adobe's design challenge competition."
+            }
+          ]
         }
-      ]
+      ],
+      footer: "Here you learn how ideas are structured, pitched, and justified in competitive PM contexts."
     },
     {
-      title: "Newsletters & Blogs",
-      icon: <FileText className="w-6 h-6" />,
-      resources: [
-        { 
-          name: "Lenny's Newsletter", 
-          type: "Newsletter", 
-          description: "Weekly insights on product, growth, and career", 
-          link: "https://www.lennysnewsletter.com/",
-          hoverTooltip: "Must-read weekly newsletter with tactical advice. Covers growth strategies, product metrics, and career development for PMs."
-        },
-        { 
-          name: "Product Hunt Daily", 
-          type: "Newsletter", 
-          description: "Daily dose of new products and trends", 
-          link: "https://www.producthunt.com/newsletter",
-          hoverTooltip: "Stay updated with latest product launches and trends. Great for understanding market dynamics and innovation patterns."
-        },
-        { 
-          name: "First Round Review", 
-          type: "Blog", 
-          description: "In-depth articles on building and scaling products", 
-          link: "https://review.firstround.com/",
-          hoverTooltip: "High-quality tactical advice from startup founders and operators. Deep dives into product strategy and team building."
-        },
-        { 
-          name: "Mind the Product", 
-          type: "Blog", 
-          description: "Community-driven insights and best practices", 
-          link: "https://www.mindtheproduct.com/",
-          hoverTooltip: "Global product management community insights. Features articles from practitioners across different industries and stages."
-        }
-      ]
-    },
-    {
-      title: "Communities",
-      icon: <Users className="w-6 h-6" />,
-      resources: [
-        { 
-          name: "Product Manager HQ Slack", 
-          type: "Community", 
-          description: "Active community for PM discussions and networking", 
-          link: "#", 
-          platform: "slack",
-          hoverTooltip: "Large Slack community with active discussions on PM topics. Great for networking and getting real-time advice from peers."
-        },
-        { 
-          name: "Women in Product", 
-          type: "Community", 
-          description: "Supporting women in product management roles", 
-          link: "https://www.womeninproduct.com/", 
-          platform: "website",
-          hoverTooltip: "Inclusive community focused on advancing women in product roles. Offers mentorship, networking, and career development resources."
-        },
-        { 
-          name: "Product School Community", 
-          type: "Community", 
-          description: "Global network of product professionals", 
-          link: "#", 
-          platform: "linkedin",
-          hoverTooltip: "Educational community with structured learning paths. Access to PM courses, workshops, and networking events."
-        },
-        { 
-          name: "Reddit r/ProductManagement", 
-          type: "Community", 
-          description: "Daily discussions, advice, and job postings", 
-          link: "https://www.reddit.com/r/ProductManagement/", 
-          platform: "reddit",
-          hoverTooltip: "Active Reddit community with daily discussions. Great for job postings, resume reviews, and getting diverse perspectives."
-        }
-      ]
-    },
-    {
-      title: "Interview Prep",
-      icon: <Target className="w-6 h-6" />,
-      resources: [
-        { 
-          name: "Lewis Lin's PM Interview Questions", 
-          type: "Book", 
-          description: "Comprehensive guide to PM interview preparation", 
-          link: "#", 
-          icon: "📚",
-          hoverTooltip: "Comprehensive collection of PM interview questions with detailed answers. Covers product design, strategy, and behavioral questions."
-        },
-        { 
-          name: "Glassdoor PM Interview Questions", 
-          type: "Resource", 
-          description: "Real interview questions from top companies", 
-          link: "https://www.glassdoor.com/", 
-          icon: "🏢",
-          hoverTooltip: "Real interview experiences and questions from candidates. Filter by company to see specific interview patterns and questions."
-        },
-        { 
-          name: "Exponent PM Interview Course", 
-          type: "Course", 
-          description: "Mock interviews and framework practice", 
-          link: "https://www.tryexponent.com/", 
-          icon: "🎯",
-          hoverTooltip: "Structured PM interview preparation with video courses. Includes mock interviews and framework practice sessions."
-        },
-        { 
-          name: "PM Interview Database", 
-          type: "Resource", 
-          description: "Crowdsourced collection of interview experiences", 
-          link: "#", 
-          icon: "📊",
-          hoverTooltip: "Community-driven database of PM interview experiences. Organized by company and role level with detailed feedback."
-        }
-      ]
-    },
-    {
-      title: "Frameworks & Tools",
-      icon: <TrendingUp className="w-6 h-6" />,
+      id: 'frameworks-tools',
+      title: 'Frameworks & Tools',
+      subtitle: 'Get practical with frameworks and toolkits for structured thinking.',
+      icon: <Zap className="w-6 h-6" />,
+      description: "Hands-on frameworks and toolkits that you can apply directly in interviews and projects:",
       resources: [
         { 
           name: "CIRCLES Method", 
-          type: "Framework", 
-          description: "Product design interview framework", 
-          link: "#",
-          hoverTooltip: "Structured approach for product design questions in interviews. Covers Comprehend, Identify, Report, Cut, List, Evaluate, Summarize."
+          description: "product design interview framework",
+          link: "https://productschool.com/blog/skills/circles-framework-guide",
+          hoverTooltip: "Structured framework for product design interviews: Comprehend, Identify, Report, Cut, List, Evaluate, Summarize."
         },
         { 
-          name: "Jobs-to-be-Done Framework", 
-          type: "Framework", 
-          description: "Understanding customer motivations and needs", 
-          link: "#",
-          hoverTooltip: "Customer research framework focusing on the 'job' customers hire products to do. Helps identify unmet needs and opportunities."
+          name: "Jobs-to-be-Done (JTBD)", 
+          description: "mapping user motivations",
+          link: "https://www.userinterviews.com/ux-research-field-guide-chapter/jobs-to-be-done-jtbd-framework",
+          hoverTooltip: "Customer research framework focusing on understanding the 'job' customers hire products to accomplish."
         },
         { 
-          name: "Product Analytics Guide", 
-          type: "Resource", 
-          description: "Measuring what matters in product development", 
-          link: "#",
-          hoverTooltip: "Comprehensive guide to product metrics and analytics setup. Covers funnel analysis, cohort analysis, and A/B testing methodologies."
+          name: "Product Analysis Funnel", 
+          description: "funnel metrics and user journey tracking",
+          link: "https://userpilot.com/blog/product-management-funnel/",
+          hoverTooltip: "Comprehensive guide to product funnel analysis and optimization strategies for user journey improvement."
         },
         { 
           name: "A/B Testing Playbook", 
-          type: "Resource", 
-          description: "Statistical methods for product experimentation", 
-          link: "#",
-          hoverTooltip: "Practical guide to running product experiments. Covers statistical significance, sample sizes, and common pitfalls in A/B testing."
+          description: "how to experiment with confidence",
+          link: "https://productschool.com/blog/skills/product-management-skills-a-b-testing",
+          hoverTooltip: "Practical guide to designing, running, and analyzing A/B tests for product decision-making."
         }
-      ]
+      ],
+      footer: "This section ensures you can structure your thinking systematically and validate your solutions."
+    },
+    {
+      id: 'staying-updated',
+      title: 'Staying Updated',
+      subtitle: 'Keep your PM instincts sharp by following trends and insights regularly.',
+      icon: <TrendingUp className="w-6 h-6" />,
+      description: "Being a PM means staying close to trends, new tools, and community discussions. These are my go-to subscriptions:",
+      resources: [
+        { 
+          name: "Lenny's Newsletter", 
+          description: "weekly tactical advice",
+          link: "https://www.lennysnewsletter.com/",
+          hoverTooltip: "Premium weekly newsletter with tactical PM advice from industry experts and practitioners."
+        },
+        { 
+          name: "Product Hunt Daily", 
+          description: "discover new launches & innovation",
+          link: "https://www.producthunt.com/newsletters",
+          hoverTooltip: "Daily digest of new product launches and innovation trends to stay ahead of market developments."
+        },
+        { 
+          name: "Product Manager Newsletter", 
+          description: "insights & frameworks weekly",
+          link: "https://theproductmanager.com/subscribe/",
+          hoverTooltip: "Weekly newsletter focusing on practical PM frameworks and industry insights from experienced practitioners."
+        },
+        { 
+          name: "Medium PM Fundamentals", 
+          description: "community-driven PM articles",
+          link: "https://medium.com/@dee.busari/product-management-fundamentals-b4328a8e8a4e",
+          hoverTooltip: "Community-driven content with diverse perspectives on product management practices and strategies."
+        }
+      ],
+      footer: "This keeps you in sync with the language, thinking, and direction of modern PMs."
+    },
+    {
+      id: 'interview-prep',
+      title: 'Interview Preparation',
+      subtitle: 'Practice structured problem-solving across the three common interview stages.',
+      icon: <Target className="w-6 h-6" />,
+      description: "Interviews test both thinking and execution structure:",
+      content: [
+        "Round 1: Resume & Basics → walk through your projects & basic PM knowledge.",
+        "Round 2: Case Round → test first-principles, estimations, and structured frameworks.",
+        "Round 3: Holistic PM Test → complete solution design, execution trade-offs, release plan.",
+        "AI Awareness → be ready for AI-related product strategy questions."
+      ],
+      resources: [
+        { 
+          name: "How to do a PM interview", 
+          description: "comprehensive interview guide",
+          link: "https://gokulns.medium.com/really-cracking-the-product-minterview-1660fb6c74c4",
+          hoverTooltip: "Step-by-step guide to PM interview preparation with frameworks and real examples."
+        },
+        { 
+          name: "Cracking PM Interview Playlist", 
+          description: "video interview preparation",
+          link: "https://youtube.com/playlist?list=PLJE844cffEGOv8H6ukiC8C398DuZfjPt7&si=CEPyDfsdvrKzY_W9",
+          hoverTooltip: "Comprehensive video playlist covering all aspects of PM interview preparation and mock interviews."
+        },
+        { 
+          name: "Mock Interview with AI", 
+          description: "AI-powered practice sessions",
+          link: "https://www.toughtongueai.com/",
+          hoverTooltip: "AI-powered platform for practicing PM interviews with instant feedback and improvement suggestions."
+        },
+        { 
+          name: "PM Exercises – Interview Questions", 
+          description: "curated practice questions",
+          link: "https://www.productmanagementexercises.com/interview-questions",
+          hoverTooltip: "Comprehensive collection of PM interview questions organized by category and difficulty level."
+        },
+        { 
+          name: "Case Solving Guide (Product Folks)", 
+          description: "structured case solving approach",
+          link: "https://www.theproductfolks.com/product-management-blog/product-management-case-study-interview-preparation-guide",
+          hoverTooltip: "Detailed guide to structuring and solving PM case study interviews with proven frameworks."
+        }
+      ],
+      footer: "This stage simulates the real pressure of PM interviews and ensures you're not caught off-guard."
+    },
+    {
+      id: 'books-deep-dives',
+      title: 'Books & Deep Dives',
+      subtitle: 'Go beyond basics with foundational PM reads.',
+      icon: <BookOpen className="w-6 h-6" />,
+      description: "Books that shaped my thinking and gave me frameworks to lean on:",
+      resources: [
+        { 
+          name: "The Product Manager Interview (Lewis Lin)", 
+          description: "comprehensive interview preparation guide",
+          link: "https://pdfcoffee.com/the-product-manager-interview-lewis-c-lin-teng-lupdf-pdf-free.html",
+          hoverTooltip: "Definitive guide to PM interviews with 164 actual questions and detailed frameworks for answering them."
+        },
+        { 
+          name: "Inspired (Marty Cagan)", 
+          description: "modern product management practices",
+          link: "https://nashnw.myqnapcloud.com:8083/download/86/pdf/86.pdf",
+          hoverTooltip: "Essential read on how technology product companies create products customers love. Covers discovery, delivery, and organization."
+        },
+        { 
+          name: "The Lean Product Playbook (Dan Olsen)", 
+          description: "product-market fit methodology",
+          link: "https://rudyct.com/Bis.Innov/16.The%20Lean%20Product%20Playbook%20How%20to%20Innovate%20with%20Minimum%20Viable%20Products%20...%20(Olsen,%20Dan)2015.pdf",
+          hoverTooltip: "Actionable guide to building products that customers want using lean product process and MVP methodology."
+        },
+        { 
+          name: "Decode and Conquer", 
+          description: "PM interview question strategies",
+          link: "https://dokumen.pub/download/decode-and-conquer-answers-to-product-management-interviews-2-ed.html",
+          hoverTooltip: "Strategic approach to PM interview preparation with frameworks for product design, strategy, and analytical questions."
+        }
+      ],
+      footer: "This is where you go deeper than prep — building intuition and maturity as a PM."
     }
   ];
 
   const navigationItems = [
-    { label: 'Product Decks', href: '#decks' },
-    { label: 'Essential Books', href: '#essentialbooks' },
-    { label: 'YouTube Channels', href: '#youtubechannels' },
-    { label: 'Newsletters & Blogs', href: '#newslettersblogs' },
-    { label: 'Communities', href: '#communities' },
-    { label: 'Interview Prep', href: '#interviewprep' },
-    { label: 'Frameworks & Tools', href: '#frameworkstools' }
+    { label: 'Intro to PM', href: '#intro-pm' },
+    { label: 'Foundations', href: '#foundations' },
+    { label: 'Case Studies', href: '#case-studies' },
+    { label: 'Frameworks', href: '#frameworks-tools' },
+    { label: 'Staying Updated', href: '#staying-updated' },
+    { label: 'Interview Prep', href: '#interview-prep' },
+    { label: 'Books', href: '#books-deep-dives' }
   ];
 
   const scrollToSection = (href: string) => {
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const navbarHeight = 80; // Approximate navbar height
+      const elementPosition = element.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({ 
+        top: elementPosition - navbarHeight, 
+        behavior: 'smooth' 
+      });
     }
   };
+
+  const ResourceCard = ({ resource, index, showLogo = false }: any) => (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="relative group"
+      onMouseEnter={() => setHoveredResource(resource)}
+      onMouseLeave={() => setHoveredResource(null)}
+    >
+      <div className="glass-card p-6 rounded-xl h-full transition-all duration-300 hover:scale-105 cursor-pointer"
+           onClick={() => resource.link && window.open(resource.link, '_blank')}>
+        <div className="flex items-start justify-between mb-4">
+          <div className="flex items-center gap-3">
+            {showLogo && resource.logo && (
+              <img src={resource.logo} alt={resource.name} className="w-8 h-8 object-contain" />
+            )}
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {resource.name}
+            </h3>
+          </div>
+          <ExternalLink className="w-4 h-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
+        </div>
+        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
+          {resource.description}
+        </p>
+      </div>
+      
+      {/* Hover Tooltip */}
+      {hoveredResource === resource && resource.hoverTooltip && (
+        <motion.div
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          exit={{ opacity: 0, y: 10 }}
+          className="absolute z-50 top-full left-0 right-0 mt-2 p-4 bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm text-white text-sm rounded-lg shadow-xl"
+        >
+          {resource.hoverTooltip}
+          <div className="absolute -top-2 left-4 w-4 h-4 bg-slate-900/95 dark:bg-slate-800/95 rotate-45" />
+        </motion.div>
+      )}
+    </motion.div>
+  );
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-purple-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
@@ -354,7 +399,7 @@ const PMResources = () => {
       </div>
 
       {/* Hero Section with Background Metrics */}
-      <section className="w-full min-h-[60vh] pb-10 flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
+      <section className="w-full min-h-[60vh] pb-6 flex flex-col items-center justify-center bg-transparent relative overflow-hidden">
         {/* Background metrics/graphics */}
         <div className="absolute inset-0 opacity-10 dark:opacity-5">
           <div className="absolute top-20 left-10 text-4xl font-bold text-blue-500">92% MAU</div>
@@ -375,41 +420,50 @@ const PMResources = () => {
           </h1>
           
           {/* About Me - Better Presentation */}
-          <div className="max-w-5xl mx-auto mb-12 px-4">
+          <div className="max-w-5xl mx-auto mb-6 px-4">
             <div className="grid md:grid-cols-3 gap-6">
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 }}
-                className="glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-5 border border-slate-200 dark:border-slate-700"
+                className="glass-card p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">About Me</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Hey! I am Animesh. Currently working as an Associate Product Manager at Tata 1mg.
+                <div className="flex items-center gap-3 mb-3">
+                  <Rocket className="w-6 h-6 text-blue-600" />
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">Current Role</h3>
+                </div>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  Associate Product Manager at Tata 1mg, contributing to impactful healthcare solutions.
                 </p>
               </motion.div>
-              
+
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.3 }}
-                className="glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-5 border border-slate-200 dark:border-slate-700"
+                className="glass-card p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Background</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  B.Tech in Electrical Engineering from IIT Delhi, passionate about healthcare solutions.
+                <div className="flex items-center gap-3 mb-3">
+                  <Star className="w-6 h-6 text-purple-600" />
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">Education</h3>
+                </div>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  B.Tech in Electrical Engineering from IIT Delhi with deep technical foundation.
                 </p>
               </motion.div>
-              
+
               <motion.div 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.4 }}
-                className="glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-5 border border-slate-200 dark:border-slate-700"
+                className="glass-card p-6 rounded-xl"
               >
-                <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-2">Purpose</h3>
-                <p className="text-sm text-slate-600 dark:text-slate-400">
-                  Curated resources that I've used personally in my PM journey to help you.
+                <div className="flex items-center gap-3 mb-3">
+                  <MessageSquare className="w-6 h-6 text-green-600" />
+                  <h3 className="font-semibold text-slate-900 dark:text-slate-100">Mission</h3>
+                </div>
+                <p className="text-slate-600 dark:text-slate-400 text-sm">
+                  Passionate about curating resources that help aspiring PMs succeed in their journey.
                 </p>
               </motion.div>
             </div>
@@ -417,219 +471,128 @@ const PMResources = () => {
         </motion.div>
       </section>
 
-      <div className="container mx-auto px-4 py-8">
-
-        {/* My Product Decks Section */}
-        <section id="decks" className="mb-16">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
+      {/* PM Journey Steps */}
+      <div className="container mx-auto px-4 space-y-16">
+        {pmJourneySteps.map((step, stepIndex) => (
+          <motion.section
+            key={step.id}
+            id={step.id}
+            initial={{ opacity: 0, y: 50 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
             viewport={{ once: true }}
-            className="text-center mb-8"
+            transition={{ duration: 0.6, delay: stepIndex * 0.1 }}
+            className="relative"
           >
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center justify-center gap-3">
-              <Presentation className="w-8 h-8" />
-              My Product Decks
-            </h2>
-            <div className="glass-card bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 max-w-2xl mx-auto border border-slate-200/50 dark:border-slate-700/50">
-              <p className="text-slate-600 dark:text-slate-400 text-sm">
-                {sectionOneLiners.decks}
+            {/* Step Header */}
+            <div className="flex items-center gap-4 mb-6">
+              <div className="flex items-center justify-center w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full text-white font-bold">
+                {stepIndex + 1}
+              </div>
+              <div>
+                <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-2">
+                  {step.title}
+                </h2>
+                <p className="text-slate-600 dark:text-slate-400 text-lg">
+                  {step.subtitle}
+                </p>
+              </div>
+            </div>
+
+            {/* Step Description */}
+            <div className="mb-8">
+              <p className="text-slate-700 dark:text-slate-300 text-lg leading-relaxed mb-4">
+                {step.description}
+              </p>
+              
+              {/* Content List */}
+              {step.content && (
+                <ul className="space-y-2 mb-6">
+                  {step.content.map((item, index) => (
+                    <li key={index} className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                      • {item}
+                    </li>
+                  ))}
+                </ul>
+              )}
+            </div>
+
+            {/* Resources Grid */}
+            {step.resources && (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                {step.resources.map((resource, index) => (
+                  <ResourceCard key={index} resource={resource} index={index} />
+                ))}
+              </div>
+            )}
+
+            {/* Subsections (for Case Studies) */}
+            {step.subsections && (
+              <div className="space-y-12">
+                {step.subsections.map((subsection, subIndex) => (
+                  <div key={subIndex}>
+                    <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-3">
+                      {subsection.title}
+                    </h3>
+                    <p className="text-slate-600 dark:text-slate-400 mb-6">
+                      {subsection.subtitle}
+                    </p>
+                    <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                      {subsection.resources.map((resource, index) => (
+                        <ResourceCard key={index} resource={resource} index={index} showLogo />
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+
+            {/* Step Footer */}
+            <div className="mt-8 p-4 bg-blue-50 dark:bg-slate-800/50 rounded-lg">
+              <p className="text-slate-700 dark:text-slate-300 italic">
+                {step.footer}
               </p>
             </div>
-          </motion.div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
-            {productDecks.map((deck, index) => (
-              <motion.a
-                key={deck.name}
-                href={deck.driveLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                whileHover={{ y: -4, scale: 1.02 }}
-                className="group glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer"
-                title={deck.hoverDescription}
-              >
-                <div className="flex items-start justify-between mb-3">
-                  <div className="flex items-start gap-3 flex-1">
-                    {deck.logo && (
-                      <img src={deck.logo} alt={deck.name} className="w-8 h-8 rounded-lg object-cover flex-shrink-0" />
-                    )}
-                    {!deck.logo && (
-                      <div className="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 flex-shrink-0">
-                        {deck.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
-                      </div>
-                    )}
-                    <h3 className="font-semibold text-slate-900 dark:text-slate-100 text-sm leading-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors flex-1">
-                      {deck.name}
-                    </h3>
-                  </div>
-                  <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0 ml-2" />
-                </div>
-                <p className="text-slate-600 dark:text-slate-300 text-xs">
-                  {deck.description}
-                </p>
-              </motion.a>
-            ))}
-          </div>
-        </section>
-
-        {/* Resource Categories */}
-        <div className="space-y-16">
-          {resourceCategories.map((category, categoryIndex) => {
-            const sectionKey = category.title.toLowerCase().replace(/[^a-z0-9]/g, '');
-            const oneLiners = {
-              'essentialbooks': sectionOneLiners.books,
-              'youtubechannels': sectionOneLiners.youtube,
-              'newslettersblogs': sectionOneLiners.newsletters,
-              'communities': sectionOneLiners.communities,
-              'interviewprep': sectionOneLiners.interview,
-              'frameworkstools': sectionOneLiners.frameworks
-            };
-            
-            return (
-              <section key={category.title} id={sectionKey} className="mb-16">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="text-center mb-8"
-                >
-                  <h2 className="text-3xl font-bold text-slate-900 dark:text-slate-100 mb-4 flex items-center justify-center gap-3">
-                    {category.icon}
-                    {category.title}
-                  </h2>
-                  <div className="glass-card bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-4 max-w-2xl mx-auto border border-slate-200/50 dark:border-slate-700/50">
-                    <p className="text-slate-600 dark:text-slate-400 text-sm">
-                      {oneLiners[sectionKey] || ''}
-                    </p>
-                  </div>
-                </motion.div>
-
-                <div className="grid md:grid-cols-2 gap-6">
-                  {category.resources.map((resource, index) => (
-                    <motion.div
-                      key={resource.name}
-                      initial={{ opacity: 0, y: 20 }}
-                      whileInView={{ opacity: 1, y: 0 }}
-                      transition={{ duration: 0.6, delay: index * 0.1 }}
-                      viewport={{ once: true }}
-                      onMouseEnter={() => {
-                        if (resource.hoverTooltip || (category.title === "Essential Books" && resource.myLearning)) {
-                          setHoveredResource(resource);
-                        }
-                      }}
-                      onMouseLeave={() => {
-                        if (resource.hoverTooltip || (category.title === "Essential Books" && resource.myLearning)) {
-                          setHoveredResource(null);
-                        }
-                      }}
-                      onClick={() => {
-                        if (resource.link && resource.link !== '#') {
-                          window.open(resource.link, '_blank');
-                        }
-                      }}
-                      className="group glass-card bg-white/80 dark:bg-slate-800/80 backdrop-blur-sm rounded-xl p-6 border border-slate-200 dark:border-slate-700 shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer relative"
-                    >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-start gap-3 flex-1">
-                        {resource.logo && (
-                          <img src={resource.logo} alt={resource.name} className="w-8 h-8 rounded-lg flex-shrink-0" />
-                        )}
-                        {!resource.logo && (
-                          <div className="w-8 h-8 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center text-xs font-bold text-slate-600 dark:text-slate-400 flex-shrink-0">
-                            {resource.name.split(' ').map(word => word[0]).join('').substring(0, 2)}
-                          </div>
-                        )}
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-1 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                            {resource.name}
-                          </h3>
-                          <span className="text-xs px-2 py-1 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 rounded-full">
-                            {resource.type}
-                          </span>
-                        </div>
-                      </div>
-                      {resource.link && resource.link !== '#' && (
-                        <ExternalLink size={16} className="text-slate-400 group-hover:text-blue-500 transition-colors flex-shrink-0" />
-                      )}
-                    </div>
-                      <p className="text-slate-600 dark:text-slate-300 text-sm">
-                        {resource.description}
-                      </p>
-              
-                      {/* Universal Hover Tooltip */}
-                      {hoveredResource?.name === resource.name && (
-                        <motion.div
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
-                          className="absolute top-full left-0 right-0 mt-2 p-4 glass-card bg-white/95 dark:bg-slate-800/95 backdrop-blur-sm rounded-xl border border-slate-200 dark:border-slate-700 shadow-lg z-50"
-                        >
-                          {category.title === "Essential Books" && resource.myLearning ? (
-                            <>
-                              <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">My Key Learnings:</h4>
-                              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{resource.myLearning}</p>
-                            </>
-                          ) : resource.hoverTooltip ? (
-                            <>
-                              <h4 className="font-semibold text-slate-700 dark:text-slate-300 mb-2">About this resource:</h4>
-                              <p className="text-slate-600 dark:text-slate-400 text-xs leading-relaxed">{resource.hoverTooltip}</p>
-                            </>
-                          ) : null}
-                        </motion.div>
-                      )}
-                    </motion.div>
-                  ))}
-                </div>
-              </section>
-            );
-          })}
-        </div>
+          </motion.section>
+        ))}
       </div>
 
       {/* Footer */}
-      <footer className="bg-slate-50 dark:bg-slate-800 py-8 mt-16">
+      <footer className="mt-20 py-12 bg-slate-100 dark:bg-slate-800">
         <div className="container mx-auto px-4 text-center">
-          <div className="glass-card bg-white/60 dark:bg-slate-800/60 backdrop-blur-sm rounded-xl p-6 max-w-md mx-auto border border-slate-200/50 dark:border-slate-700/50 mb-6">
-            <p className="text-slate-600 dark:text-slate-400 text-sm mb-4">
-              Want to know a bit more about me? Here's my portfolio link.
-            </p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-8"
+          >
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-100 mb-4">
+              Want to know more about me?
+            </h3>
             <motion.button
               onClick={() => navigate('/')}
               whileHover={{ scale: 1.05 }}
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-lg hover:shadow-lg transition-all"
+              className="inline-flex items-center gap-2 bg-gradient-to-r from-blue-600 to-purple-600 text-white px-8 py-3 rounded-full font-medium hover:shadow-lg transition-all"
             >
-              View My Portfolio
+              Check out my Portfolio
+              <ExternalLink size={16} />
             </motion.button>
-          </div>
+          </motion.div>
           
-          <div className="flex items-center justify-center gap-6 mb-4">
-            <a
-              href="https://linkedin.com/in/animesh-jhawar"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="text-slate-500 hover:text-blue-600 transition-colors"
-              aria-label="LinkedIn"
-            >
-              <Linkedin size={20} />
-            </a>
-            <a
-              href="mailto:animeshjhawar@gmail.com"
-              className="text-slate-500 hover:text-blue-600 transition-colors"
-              aria-label="Email"
-            >
-              <Mail size={20} />
-            </a>
+          <div className="border-t border-slate-200 dark:border-slate-700 pt-8">
+            <p className="text-slate-600 dark:text-slate-400 mb-4">
+              © 2025 Animesh Jhawar™ - All rights reserved
+            </p>
+            <div className="flex justify-center gap-6">
+              <a href="https://linkedin.com/in/animesh-jhawar" target="_blank" rel="noopener noreferrer" 
+                 className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Linkedin size={20} />
+              </a>
+              <a href="mailto:animesh@example.com" 
+                 className="text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                <Mail size={20} />
+              </a>
+            </div>
           </div>
-          
-          <p className="text-slate-400 text-sm">
-            © 2025 Animesh Jhawar™ - All rights reserved
-          </p>
         </div>
       </footer>
     </div>
