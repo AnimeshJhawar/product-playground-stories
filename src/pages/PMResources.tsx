@@ -225,11 +225,32 @@ const PMResources = () => {
       subtitle: 'Practice structured problem-solving across the three common interview stages.',
       icon: <Target className="w-6 h-6" />,
       description: "Interviews test both thinking and execution structure:",
-      content: [
-        "Round 1: Resume & Basics → walk through your projects & basic PM knowledge.",
-        "Round 2: Case Round → test first-principles, estimations, and structured frameworks.",
-        "Round 3: Holistic PM Test → complete solution design, execution trade-offs, release plan.",
-        "AI Awareness → be ready for AI-related product strategy questions."
+      cards: [
+        {
+          title: "Round 1",
+          description: "Resume deep dive + product understanding.",
+          icon: <FileText className="w-8 h-8" />,
+          hoverTooltip: "Walk through your projects, demonstrate PM knowledge, explain your motivation for PM role."
+        },
+        {
+          title: "Round 2", 
+          description: "Case rounds (first-principles thinking, estimation, structured solutioning).",
+          icon: <Brain className="w-8 h-8" />,
+          hoverTooltip: "Product design, market sizing, root cause analysis using frameworks like CIRCLES and structured thinking."
+        },
+        {
+          title: "Round 3",
+          description: "Holistic PM test (end-to-end design, execution plan, bandwidth tradeoffs).",
+          icon: <Activity className="w-8 h-8" />,
+          hoverTooltip: "Complete product strategy, roadmap prioritization, stakeholder management, and go-to-market planning."
+        },
+        {
+          title: "AI Awareness",
+          description: "Be ready for AI-related product strategy questions in modern PM interviews.",
+          icon: <Zap className="w-8 h-8" />,
+          hoverTooltip: "Understanding AI product development, ethics, data strategy, and how AI transforms user experiences.",
+          isSpecial: true
+        }
       ],
       resources: [
         { 
@@ -323,89 +344,156 @@ const PMResources = () => {
     }
   };
 
-  const ResourceCard = ({ resource, index, showLogo = false }: any) => (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="relative group"
-      onMouseEnter={() => setHoveredResource(resource)}
-      onMouseLeave={() => setHoveredResource(null)}
-    >
-      <div 
-        className="glass-card p-6 rounded-xl h-full transition-all duration-300 hover:scale-105 cursor-pointer"
-        onClick={() => resource.link && window.open(resource.link, '_blank')}
+  const ResourceCard = ({ resource, index, showLogo = false }: any) => {
+    const [isHovered, setIsHovered] = useState(false);
+    
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className="relative group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
       >
-        <div className="flex items-start justify-between mb-4">
-          <div className="flex items-center gap-3">
-            {showLogo && resource.logo && (
-              <img src={resource.logo} alt={resource.name} className="w-8 h-8 object-contain" />
+        <div 
+          className={`glass-card p-6 rounded-xl h-full transition-all duration-300 cursor-pointer relative overflow-hidden ${
+            isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
+          }`}
+          onClick={() => resource.link && window.open(resource.link, '_blank')}
+        >
+          <div className="flex items-start justify-between mb-4">
+            <div className="flex items-center gap-3">
+              {showLogo && resource.logo && (
+                <img src={resource.logo} alt={resource.name} className="w-8 h-8 object-contain" />
+              )}
+              <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+                {resource.name}
+              </h3>
+            </div>
+            {isHovered && (
+              <motion.div
+                initial={{ opacity: 0, scale: 0.8 }}
+                animate={{ opacity: 1, scale: 1 }}
+                className="absolute top-4 right-4 bg-blue-500/20 rounded-full p-2"
+              >
+                <ExternalLink className="w-4 h-4 text-blue-500" />
+              </motion.div>
             )}
-            <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {resource.name}
-            </h3>
           </div>
-          <ExternalLink className="w-4 h-4 text-slate-400 opacity-0 group-hover:opacity-100 transition-opacity" />
-        </div>
-        <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-          {resource.description}
-        </p>
-      </div>
-      
-      {/* Fixed Position Hover Tooltip */}
-      {hoveredResource === resource && resource.hoverTooltip && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          className="absolute z-[100] top-0 left-0 right-0 bottom-0 pointer-events-none"
-        >
-          <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm text-white text-sm rounded-xl p-4 shadow-2xl border border-white/10 flex items-center justify-center">
-            <p className="text-center leading-relaxed">{resource.hoverTooltip}</p>
-          </div>
-        </motion.div>
-      )}
-    </motion.div>
-  );
-
-  const StepCard = ({ card, index }: any) => (
-    <motion.div
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: index * 0.1 }}
-      className="relative group"
-      onMouseEnter={() => setHoveredResource(card)}
-      onMouseLeave={() => setHoveredResource(null)}
-    >
-      <div className="glass-card p-6 rounded-xl h-full transition-all duration-300 hover:scale-105">
-        <div className="flex flex-col items-center text-center">
-          <div className="mb-4 text-blue-600 dark:text-blue-400">
-            {card.icon}
-          </div>
-          <h3 className="font-bold text-lg text-slate-900 dark:text-slate-100 mb-2">
-            {card.title}
-          </h3>
-          <p className="text-slate-600 dark:text-slate-400 text-sm leading-relaxed">
-            {card.description}
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            {resource.description}
           </p>
+          
+          {/* Hover Tooltip */}
+          {isHovered && resource.hoverTooltip && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900 text-xs py-2 px-3 rounded-lg shadow-lg z-50 w-64 text-center"
+            >
+              {resource.hoverTooltip}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></div>
+            </motion.div>
+          )}
         </div>
-      </div>
-      
-      {/* Fixed Position Hover Tooltip */}
-      {hoveredResource === card && card.hoverTooltip && (
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0, scale: 0.95 }}
-          className="absolute z-[100] top-0 left-0 right-0 bottom-0 pointer-events-none"
-        >
-          <div className="absolute inset-0 bg-slate-900/95 dark:bg-slate-800/95 backdrop-blur-sm text-white text-sm rounded-xl p-4 shadow-2xl border border-white/10 flex items-center justify-center">
-            <p className="text-center leading-relaxed">{card.hoverTooltip}</p>
+      </motion.div>
+    );
+  };
+
+  const StepCard = ({ card, index }: any) => {
+    const [isHovered, setIsHovered] = useState(false);
+    
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className="relative group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className={`glass-card p-6 rounded-xl h-full transition-all duration-300 relative overflow-hidden ${
+          isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
+        }`}>
+          <div className="flex flex-col items-center text-center h-full">
+            <div className="mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
+              {card.icon}
+            </div>
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+              {card.title}
+            </h3>
+            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-grow">
+              {card.description}
+            </p>
           </div>
-        </motion.div>
-      )}
-    </motion.div>
-  );
+          
+          {/* Hover Tooltip */}
+          {isHovered && card.hoverTooltip && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900 text-xs py-2 px-3 rounded-lg shadow-lg z-50 w-64 text-center"
+            >
+              {card.hoverTooltip}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></div>
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
+    );
+  };
+
+  const InterviewCard = ({ card, index }: any) => {
+    const [isHovered, setIsHovered] = useState(false);
+    
+    return (
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: index * 0.1 }}
+        className="relative group"
+        onMouseEnter={() => setIsHovered(true)}
+        onMouseLeave={() => setIsHovered(false)}
+      >
+        <div className={`glass-card p-6 rounded-xl h-full transition-all duration-300 relative overflow-hidden ${
+          isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
+        } ${card.isSpecial ? 'bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20' : ''}`}>
+          <div className="flex flex-col items-center text-center h-full">
+            <div className={`mb-4 p-3 rounded-full ${
+              card.isSpecial 
+                ? 'bg-orange-100 dark:bg-orange-900/30' 
+                : 'bg-blue-100 dark:bg-blue-900/30'
+            }`}>
+              {card.icon}
+            </div>
+            <h3 className={`font-semibold mb-3 transition-colors ${
+              card.isSpecial 
+                ? 'text-orange-900 dark:text-orange-100 group-hover:text-orange-600 dark:group-hover:text-orange-400'
+                : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+            }`}>
+              {card.title}
+            </h3>
+            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-grow">
+              {card.description}
+            </p>
+          </div>
+          
+          {/* Hover Tooltip */}
+          {isHovered && card.hoverTooltip && (
+            <motion.div 
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900 text-xs py-2 px-3 rounded-lg shadow-lg z-50 w-64 text-center"
+            >
+              {card.hoverTooltip}
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></div>
+            </motion.div>
+          )}
+        </div>
+      </motion.div>
+    );
+  };
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-purple-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
@@ -562,27 +650,31 @@ const PMResources = () => {
               </p>
             </div>
 
-            {/* Step 1 Special Cards */}
-            {step.cards && (
-              <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-                {step.cards.map((card, index) => (
+            {/* Step 1 - Special layout with 4 cards */}
+            {step.id === 'intro-pm' && step.cards && (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+                {step.cards.map((card: any, index: number) => (
                   <StepCard key={index} card={card} index={index} />
                 ))}
               </div>
             )}
 
-            {/* Content List for Interview Prep */}
-            {step.content && !step.cards && (
-              <div className="max-w-4xl mx-auto mb-12">
-                <ul className="space-y-3">
-                  {step.content.map((item, index) => (
-                    <li key={index} className="text-slate-600 dark:text-slate-400 leading-relaxed text-center">
-                      • {item}
-                    </li>
+            {/* Step 6 - Interview Prep with 4 cards */}
+            {step.id === 'interview-prep' && step.cards && (
+              <>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+                  {step.cards.slice(0, 3).map((card: any, index: number) => (
+                    <InterviewCard key={index} card={card} index={index} />
                   ))}
-                </ul>
-              </div>
+                </div>
+                <div className="flex justify-center mb-8">
+                  <div className="w-full md:w-1/3">
+                    <InterviewCard card={step.cards[3]} index={3} />
+                  </div>
+                </div>
+              </>
             )}
+
 
             {/* Resources Grid */}
             {step.resources && (
