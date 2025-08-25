@@ -461,56 +461,64 @@ const PMResources = () => {
   );
 };
   const InterviewCard = ({ card, index }: any) => {
-    const [isHovered, setIsHovered] = useState(false);
-    
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="relative group"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className={`glass-card p-6 rounded-xl h-full transition-all duration-300 relative overflow-hidden ${
-          isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
-        } ${card.isSpecial ? 'bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20' : ''}`}>
-          <div className="flex flex-col items-center text-center h-full">
-            <div className={`mb-4 p-3 rounded-full ${
-              card.isSpecial 
-                ? 'bg-orange-100 dark:bg-orange-900/30' 
-                : 'bg-blue-100 dark:bg-blue-900/30'
-            }`}>
-              {card.icon}
-            </div>
-            <h3 className={`font-semibold mb-3 transition-colors ${
-              card.isSpecial 
-                ? 'text-orange-900 dark:text-orange-100 group-hover:text-orange-600 dark:group-hover:text-orange-400'
-                : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'
-            }`}>
-              {card.title}
-            </h3>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-grow">
-              {card.description}
-            </p>
-          </div>
-          
-          {/* Hover Tooltip */}
-          {isHovered && card.hoverTooltip && (
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900 text-xs py-2 px-3 rounded-lg shadow-lg z-50 w-64 text-center"
-            >
-              {card.hoverTooltip}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></div>
-            </motion.div>
-          )}
-        </div>
-      </motion.div>
-    );
-  };
+  const [isHovered, setIsHovered] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
 
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="relative group"
+      onMouseEnter={(e) => {
+        setIsHovered(true);
+        setTooltipPos({ x: e.clientX, y: e.clientY - 10 });
+      }}
+      onMouseMove={(e) => setTooltipPos({ x: e.clientX, y: e.clientY - 10 })}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div className={`glass-card p-6 rounded-xl h-full transition-all duration-300 relative ${
+        isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
+      } ${card.isSpecial ? 'bg-gradient-to-br from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20' : 'bg-white dark:bg-slate-800'}`}>
+        <div className="flex flex-col items-center text-center h-full">
+          <div className={`mb-4 p-3 rounded-full ${
+            card.isSpecial 
+              ? 'bg-orange-100 dark:bg-orange-900/30' 
+              : 'bg-blue-100 dark:bg-blue-900/30'
+          }`}>
+            {card.icon}
+          </div>
+          <h3 className={`font-semibold mb-3 transition-colors ${
+            card.isSpecial 
+              ? 'text-orange-900 dark:text-orange-100 group-hover:text-orange-600 dark:group-hover:text-orange-400'
+              : 'text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400'
+          }`}>
+            {card.title}
+          </h3>
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-grow">
+            {card.description}
+          </p>
+        </div>
+      </div>
+
+      {/* Floating Tooltip */}
+      {isHovered && card.hoverTooltip && (
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed z-[9999] p-3 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs rounded-lg shadow-xl w-64 pointer-events-none"
+          style={{
+            top: tooltipPos.y,
+            left: tooltipPos.x,
+            transform: 'translate(-50%, -100%)',
+          }}
+        >
+          {card.hoverTooltip}
+        </motion.div>
+      )}
+    </motion.div>
+  );
+};
   return (
     <div className="min-h-screen bg-gradient-to-b from-blue-50 via-white to-purple-100 dark:from-slate-900 dark:via-slate-900 dark:to-slate-900">
       {/* Glassmorphism Header */}
