@@ -345,7 +345,7 @@ const PMResources = () => {
     }
   };
 
-  export const ResourceCard = ({ resource, index, showLogo = false }: any) => {
+  const ResourceCard = ({ resource, index, showLogo = false }: any) => {
   const [isHovered, setIsHovered] = useState(false);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
 
@@ -406,7 +406,7 @@ const PMResources = () => {
   );
 };
 
-export const StepCard = ({ card, index }: any) => {
+  const StepCard = ({ card, index }: any) => {
   const [isHovered, setIsHovered] = useState(false);
   const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
 
