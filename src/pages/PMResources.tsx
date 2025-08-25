@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+
 import { ArrowLeft, ExternalLink, BookOpen, Video, FileText, Users, Target, TrendingUp, Presentation, Linkedin, Mail, Lightbulb, Brain, Trophy, Star, MessageSquare, Zap, Rocket, Search, BarChart, TrendingDown, Activity } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -344,106 +345,121 @@ const PMResources = () => {
     }
   };
 
-  const ResourceCard = ({ resource, index, showLogo = false }: any) => {
-    const [isHovered, setIsHovered] = useState(false);
-    
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="relative group"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
+  export const ResourceCard = ({ resource, index, showLogo = false }: any) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="relative group"
+      onMouseEnter={(e) => {
+        setIsHovered(true);
+        setTooltipPos({ x: e.clientX, y: e.clientY - 10 });
+      }}
+      onMouseMove={(e) => setTooltipPos({ x: e.clientX, y: e.clientY - 10 })}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className={`cursor-pointer rounded-xl p-6 bg-white dark:bg-slate-800 transition-all shadow-sm hover:shadow-lg border border-transparent hover:border-blue-300 relative`}
+        onClick={() => resource.link && window.open(resource.link, '_blank')}
       >
-        <div 
-          className={`glass-card p-6 rounded-xl h-full transition-all duration-300 cursor-pointer relative overflow-hidden ${
-            isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
-          }`}
-          onClick={() => resource.link && window.open(resource.link, '_blank')}
-        >
-          <div className="flex items-start justify-between mb-4">
-            <div className="flex items-center gap-3">
-              {showLogo && resource.logo && (
-                <img src={resource.logo} alt={resource.name} className="w-8 h-8 object-contain" />
-              )}
-              <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-                {resource.name}
-              </h3>
-            </div>
-            {isHovered && (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.8 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="absolute top-4 right-4 bg-blue-500/20 rounded-full p-2"
-              >
-                <ExternalLink className="w-4 h-4 text-blue-500" />
-              </motion.div>
+        {/* Top Row */}
+        <div className="flex items-center justify-between mb-4">
+          <div className="flex items-center gap-3">
+            {showLogo && resource.logo && (
+              <img src={resource.logo} alt={resource.name} className="w-8 h-8 object-contain" />
             )}
-          </div>
-          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
-            {resource.description}
-          </p>
-          
-          {/* Hover Tooltip */}
-          {isHovered && resource.hoverTooltip && (
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900 text-xs py-2 px-3 rounded-lg shadow-lg z-50 w-64 text-center"
-            >
-              {resource.hoverTooltip}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></div>
-            </motion.div>
-          )}
-        </div>
-      </motion.div>
-    );
-  };
-
-  const StepCard = ({ card, index }: any) => {
-    const [isHovered, setIsHovered] = useState(false);
-    
-    return (
-      <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: index * 0.1 }}
-        className="relative group"
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
-      >
-        <div className={`glass-card p-6 rounded-xl h-full transition-all duration-300 relative overflow-hidden ${
-          isHovered ? 'border border-blue-300/30 shadow-lg shadow-blue-500/20' : ''
-        }`}>
-          <div className="flex flex-col items-center text-center h-full">
-            <div className="mb-4 p-3 bg-blue-100 dark:bg-blue-900/30 rounded-full">
-              {card.icon}
-            </div>
-            <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-3 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-              {card.title}
+            <h3 className="font-semibold text-slate-900 dark:text-slate-100 group-hover:text-blue-600 transition-colors">
+              {resource.name}
             </h3>
-            <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed flex-grow">
-              {card.description}
-            </p>
           </div>
-          
-          {/* Hover Tooltip */}
-          {isHovered && card.hoverTooltip && (
-            <motion.div 
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              className="absolute -top-2 left-1/2 transform -translate-x-1/2 -translate-y-full bg-slate-900 dark:bg-slate-100 text-slate-100 dark:text-slate-900 text-xs py-2 px-3 rounded-lg shadow-lg z-50 w-64 text-center"
-            >
-              {card.hoverTooltip}
-              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-slate-900 dark:border-t-slate-100"></div>
-            </motion.div>
+          {resource.link && (
+            <ExternalLink className="w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
           )}
         </div>
-      </motion.div>
-    );
-  };
 
+        {/* Description */}
+        <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+          {resource.description}
+        </p>
+      </div>
+
+      {/* Floating Tooltip */}
+      {isHovered && resource.hoverTooltip && (
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed z-[9999] p-3 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs rounded-lg shadow-xl w-64 pointer-events-none"
+          style={{
+            top: tooltipPos.y,
+            left: tooltipPos.x,
+            transform: 'translate(-50%, -100%)',
+          }}
+        >
+          {resource.hoverTooltip}
+        </motion.div>
+      )}
+    </motion.div>
+  );
+};
+
+export const StepCard = ({ card, index }: any) => {
+  const [isHovered, setIsHovered] = useState(false);
+  const [tooltipPos, setTooltipPos] = useState({ x: 0, y: 0 });
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ delay: index * 0.1 }}
+      className="relative group"
+      onMouseEnter={(e) => {
+        setIsHovered(true);
+        setTooltipPos({ x: e.clientX, y: e.clientY - 10 });
+      }}
+      onMouseMove={(e) => setTooltipPos({ x: e.clientX, y: e.clientY - 10 })}
+      onMouseLeave={() => setIsHovered(false)}
+    >
+      <div
+        className={`rounded-xl p-6 transition-all relative cursor-pointer shadow-sm hover:shadow-lg border border-transparent hover:border-blue-300 ${
+          card.isSpecial ? 'bg-gradient-to-tr from-orange-50 to-yellow-50 dark:from-orange-900/20 dark:to-yellow-900/20' : 'bg-white dark:bg-slate-800'
+        }`}
+      >
+        <div className="flex flex-col items-center text-center">
+          <div className="mb-4 p-3 rounded-full bg-blue-100 dark:bg-blue-900/30">{card.icon}</div>
+          <h3 className="font-semibold text-slate-900 dark:text-slate-100 mb-2 group-hover:text-blue-600 transition-colors">
+            {card.title}
+          </h3>
+          <p className="text-slate-600 dark:text-slate-300 text-sm leading-relaxed">
+            {card.description}
+          </p>
+        </div>
+        {card.link && (
+          <ExternalLink className="absolute top-4 right-4 w-4 h-4 text-blue-500 opacity-0 group-hover:opacity-100 transition-opacity" />
+        )}
+      </div>
+
+      {/* Floating Tooltip */}
+      {isHovered && card.hoverTooltip && (
+        <motion.div
+          initial={{ opacity: 0, y: 5 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="fixed z-[9999] p-3 bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900 text-xs rounded-lg shadow-xl w-64 pointer-events-none"
+          style={{
+            top: tooltipPos.y,
+            left: tooltipPos.x,
+            transform: 'translate(-50%, -100%)',
+          }}
+        >
+          {card.hoverTooltip}
+        </motion.div>
+      )}
+    </motion.div>
+  );
+};
   const InterviewCard = ({ card, index }: any) => {
     const [isHovered, setIsHovered] = useState(false);
     
