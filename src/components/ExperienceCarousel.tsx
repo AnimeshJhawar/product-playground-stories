@@ -16,37 +16,38 @@ interface Experience {
 
 const experiences: Experience[] = [
   {
-    company: "Crackle",
+    company: "Crackle Technologies",
     logo: "/lovable-uploads/8afa878a-8e32-45d5-922d-5826f7ae39b2.png",
     title: "Product Development Intern",
     duration: "Jan 2024 – May 2024",
-    summary: "Built OTC e-pharmacy MVP from scratch.",
-    location: "Remote",
-    fullDescription: "Led the development of an over-the-counter e-pharmacy platform from conception to launch, achieving significant user adoption and creating seamless cross-team collaboration processes.",
+    summary: "Part of the founding team, and developed ML model for ad quality.",
+    location: "New Delhi, India",
+    fullDescription: "Worked on building data-driven ad-tech solutions by developing a BERT-based machine learning model to evaluate app quality, improving ad performance by 30%. Conducted market analysis of SSPs and DSPs, identified differentiating features, and optimized header bidding strategies to boost revenue by 15%.",
     achievements: [
-      "Built OTC e-pharmacy MVP from scratch achieving 200K+ monthly visits",
-      "Designed and managed cross-team handoffs for seamless delivery experience",
-      "Conducted user research and market analysis for pharmacy digitization strategy"
+      "Developed BERT-based machine learning model for app quality assessment, boosting ad performance by 30%",
+      "Conducted competitive analysis of top SSPs and DSPs, identifying 10+ unique features for platform enhancement",
+      "Optimized and refined header bidding strategies, achieving a 15% increase in CPM and revenue potential"
     ],
-    skills: ["Product Development", "E-commerce", "User Research", "Cross-functional Leadership"],
-    link: "https://meditally.lovable.app/"
+    skills: ["Machine Learning", "AdTech", "BERT", "Competitive Analysis", "Header Bidding", "Revenue Optimization"],
+    link: "https://www.linkedin.com/company/crackletech/"
   },
   {
-    company: "Samsung",
+    company: "Samsung Research & Development Institute",
     logo: "/lovable-uploads/ae619e62-847a-4da5-be26-da76e8ba61ac.png",
-    title: "Software Development Intern",
-    duration: "May 2023 – July 2023",
-    summary: "Researched voice assistant onboarding flows.",
-    location: "Seoul, South Korea",
-    fullDescription: "Conducted comprehensive research on voice assistant user experience for Samsung's massive user base, contributing to process optimization innovations that led to patent applications.",
+    title: "Developer Automation Intern",
+    duration: "May 2023 – Jun 2023",
+    summary: "Built automation utilities and test suites to improve API validation.",
+    location: "New Delhi, India",
+    fullDescription: "Designed and implemented automation tools to streamline API testing workflows. Created 40+ utility functions and 12 specialized test suites to validate diverse scenarios, significantly enhancing extensibility and reliability. Leveraged the TestNG framework to accelerate processing, achieving a 70% efficiency gain over manual test execution.",
     achievements: [
-      "Researched voice assistant onboarding flows for Samsung's 10M+ user base",
-      "Filed 2 process optimization patents with the research team",
-      "Analyzed user behavior patterns and designed improved interaction flows"
+      "Constructed 40+ utility functions to streamline field additions and improve test case extensibility",
+      "Developed 12 specialized test suites for diverse scenarios, rigorously validating API calls",
+      "Leveraged TestNG framework to boost test case processing time, achieving 70% efficiency gain over manual execution"
     ],
-    skills: ["Voice UX", "User Research", "Patent Filing", "Process Optimization"]
+    skills: ["Automation", "API Testing", "TestNG", "Java", "Software Development", "Process Efficiency"]
   }
 ];
+
 
 export default function ExperienceCarousel() {
   const [selectedExperience, setSelectedExperience] = useState<Experience | null>(null);
@@ -184,7 +185,7 @@ export default function ExperienceCarousel() {
                       rel="noopener noreferrer"
                       className="inline-block mt-3 text-blue-600 dark:text-blue-400 hover:underline text-sm font-medium"
                     >
-                      View Prototype (made for mobile) →
+                      View Crackle →
                     </a>
                   )}
                 </div>
