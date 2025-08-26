@@ -30,10 +30,10 @@ const IntroSection = () => (
         Animesh Jhawar
       </h1>
       <div className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent text-center">
-        Product Thinker
+        Turning Insights into Impact
       </div>
       <h2 className="text-lg mt-2 font-inter text-slate-700 dark:text-slate-200 text-center font-medium">
-        Story-Led Builder
+        Narratives → Features → Impact
       </h2>
       <p className="text-base mt-2 font-inter text-slate-500 dark:text-slate-400 text-center max-w-xs mx-auto">
         From healthtech to blockchain — shaping better journeys.
