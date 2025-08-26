@@ -22,7 +22,7 @@ const roles = [
       "Led cross-functional teams including engineering, design, and operations for seamless product delivery"
     ],
     skills: ["Product Strategy", "User Research", "A/B Testing", "Supply Chain Optimization", "Healthcare UX", "Cross-functional Leadership"],
-    link: undefined
+    link: "https://www.1mg.com/labs"
   },
   {
     title: "Fellow @ Indian Network for Impact",
@@ -40,7 +40,7 @@ const roles = [
       "Established partnerships with 50+ rural pharmacies for pilot deployment"
     ],
     skills: ["Social Impact", "Rural Healthcare", "POS Systems", "Inventory Management", "User Research", "Product Development"],
-    link: undefined
+    link: "https://meditally.lovable.app"
   }
 ];
 
