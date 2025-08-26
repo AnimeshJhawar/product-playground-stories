@@ -12,7 +12,7 @@ const socialPlatforms = [
   },
   {
     name: 'YouTube', 
-    description: 'Product management tutorials and insights',
+    description: 'More about my life',
     url: 'https://www.youtube.com/@beingaakrshit',
     gradient: 'from-red-600 to-red-700',
     logo: '/lovable-uploads/youtube-logo.png'
