@@ -72,7 +72,7 @@ const PMResources = () => {
         { 
           name: "McKinsey Forward", 
           description: "structured problem-solving and analytical storytelling",
-          link: "#",
+          link: "https://www.credly.com/badges/9255c91e-c154-475c-b108-5e71242c7fcb/linked_in_profile",
           hoverTooltip: "Professional development program focusing on structured thinking and analytical frameworks for business problems."
         }
       ],
@@ -92,23 +92,23 @@ const PMResources = () => {
             { 
               name: "Flipkart", 
               description: "Made for campus recruitment",
-              link: "#",
-              logo: "/lovable-uploads/flipkart-logo.png",
-              hoverTooltip: "E-commerce marketplace strategy and growth framework designed for campus recruitment process."
+              link: "https://drive.google.com/file/d/1yY9feLpPM6FsWUZGxvlGUb8QgxQY6zX/view?usp=sharing",
+              logo: "/lovable-uploads/a107b915-9823-4083-b5d1-a5e562f21aa4.png",
+              hoverTooltip: "Solve a problem of 2030."
             },
             { 
               name: "Groww", 
               description: "Made for campus recruitment",
-              link: "#",
-              logo: "/lovable-uploads/groww-logo.png",
-              hoverTooltip: "Fintech product strategy and user acquisition approach for investment platform recruitment case."
+              link: "https://drive.google.com/file/d/1xFn2sjJgE8ww9UxzIsqiOP7rnGYxYkan/view?usp=sharing",
+              logo: "/lovable-uploads/f14548cb-bf53-4ded-a927-ddf895c3574e.png",
+              hoverTooltip: "Fintech product strategy and user acquisition approach for investment platform."
             },
             { 
               name: "Tata 1mg", 
               description: "Made for campus recruitment",
               link: "https://drive.google.com/file/d/16_l4Ec_nga0X_BlZDzW3lCQDJR_4jAdu/view?usp=sharing",
-              logo: "/src/assets/1mg-logo.png",
-              hoverTooltip: "Healthcare platform product strategy focusing on user personalization and retention for recruitment."
+              logo: "/src/assets/1mg-logo1.png",
+              hoverTooltip: "Healthcare platform product strategy focusing on user personalization and retention."
             }
           ]
         },
