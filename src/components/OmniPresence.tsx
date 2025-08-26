@@ -8,7 +8,7 @@ const socialPlatforms = [
     description: 'Professional updates and industry insights',
     url: 'https://www.linkedin.com/in/animeshjhawar/',
     gradient: 'from-blue-600 to-blue-700',
-    logo: '/src/assets/linkedin-logo.png'
+    logo: 'src/assets/linkedin-logo.png'
   },
   {
     name: 'YouTube', 
@@ -29,7 +29,7 @@ const socialPlatforms = [
     description: 'Open source projects and code repositories',
     url: 'https://github.com/AnimeshJhawar',
     gradient: 'from-gray-700 to-gray-800',
-    logo: '/src/assets/github-logo.png'
+    logo: 'src/assets/github-logo.png'
   }
 ];
 
