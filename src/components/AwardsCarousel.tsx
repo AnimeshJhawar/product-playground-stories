@@ -9,6 +9,12 @@ const awards = [
     year: "Dec 2024",
     logo: "/lovable-uploads/f464991b-15e7-4982-ac64-a80948474c26.png"
   },
+   {
+    name: "McKinsey Forward Graduate",
+    detail: "Issued by McKinsey & Company",
+    year: "Jul 2025",
+    logo: "src/assets/mck.png"
+  },
   {
     name: "Business Mela Contest Winner",
     detail: "Issued by Recruit Co.Pvt. Ltd and IIT Delhi",
