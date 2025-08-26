@@ -4,16 +4,16 @@ import { Code2, Terminal, Figma, Github, ExternalLink } from "lucide-react";
 
 const technicalProjects = [
   {
-    name: "Pharmacy Digitization",
-    impact: "Digitized pharmacy workflows for hundreds of clinics.",
+    name: "Meditally: A Pharmacy POS App",
+    impact: "Designed and developed a prototype platform digitizing pharmacy inventory.",
     tools: [<Code2 key="java" className="w-5 h-5" />, <Figma key="figma" className="w-5 h-5" />],
-    githubLink: "https://github.com/animesh",
+    githubLink: "https://meditally.netlify.app/",
   },
   {
     name: "DSCoin",
-    impact: "Blockchain demo for secure transactions & smart contracts.",
+    impact: "Blockchain made from scratch for secure transactions & smart contracts.",
     tools: [<Code2 key="java" className="w-5 h-5" />, <Terminal key="python" className="w-5 h-5" />],
-    githubLink: "https://github.com/animesh",
+    githubLink: "https://github.com/AnimeshJhawar/DS_Coin",
   },
 ];
 
@@ -22,12 +22,12 @@ const caseStudies = [
     name: "Tata 1mg Personalization",
     impact: "Enhanced personalization for users on the 1mg app to improve user experience and engagement.",
     tools: [<Figma key="figma" className="w-5 h-5" />],
-    caseStudyLink: "#",
-    logo: "/src/assets/1mg-logo.png"
+    caseStudyLink: "https://drive.google.com/file/d/16_l4Ec_nga0X_BlZDzW3lCQDJR_4jAdu/view?usp=sharing",
+    logo: "/src/assets/1mg-logo1.png"
   },
   {
     name: "Business Mela Competition by Recruit",
-    impact: "Business opportunities analysis for Medium Small Scale Enterprises.",
+    impact: "Business opportunities creator for Medium Small Scale Enterprises.",
     tools: [<Figma key="figma" className="w-5 h-5" />],
     caseStudyLink: "#",
     logo: "/lovable-uploads/recruit-logo.png"
