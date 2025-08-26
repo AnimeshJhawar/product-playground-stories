@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Calendar, Users, TrendingUp, Target, Lightbulb, ChevronRight } from 'lucide-react';
@@ -9,55 +8,55 @@ const PMPlayground = () => {
   const projects = [
     {
       id: 1,
-      title: "Live Lab Reports Widget",
+      title: "D-Web Diagnostics Website Revamp",
       company: "Tata 1mg",
       companyLink: "https://1mg.com",
       companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2024",
-      impact: "40% faster report access",
-      description: "Redesigned lab report flow based on diabetic user interviews, reducing friction in critical health moments.",
-      tags: ["User Research", "Healthcare UX", "Data Visualization"],
+      impact: "10k+ DAUs impacted · +6% conversion · +10pp CSAT",
+      description: "Complete revamp of diagnostics desktop journey with lean resources, boosting trust, SEO, and performance.",
+      tags: ["Product Discovery", "UX Audit", "UI/UX Design", "Lean Product Development", "SEO Strategy"],
       icon: <TrendingUp className="w-6 h-6" />,
-      details: "Deep user interviews with 50+ diabetic patients revealed pain points in accessing critical lab values. Built real-time widget with smart notifications."
+      details: "Redesigned entire diagnostics booking flow (Home → Search → PDP → Checkout). Conducted UX audit, optimized placement of trust-building elements, and improved conversion, SEO, and performance marketing efficiency."
     },
     {
       id: 2,
-      title: "Homepage Activation Funnel",
+      title: "Partial Reports Development",
+      company: "Tata 1mg",
+      companyLink: "https://1mg.com",
+      companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
+      period: "2024",
+      impact: "4000+ reports automated · 20,000 CX hours saved · 18% query reduction",
+      description: "Enabled automated partial reports & critical callouts, improving compliance and customer experience.",
+      tags: ["Product Development", "Automation", "Compliance-Driven Design", "CX Optimization", "Operational Efficiency"],
+      icon: <Target className="w-6 h-6" />,
+      details: "Released partial reports for multi-test packages and automated critical callouts (4–5k/month). Saved 20,000 annual CX hours, reduced top query driver 'Where is my report?', and ensured compliance with government norms."
+    },
+    {
+      id: 3,
+      title: "Quick Commerce Communication Optimization",
       company: "Tata 1mg",
       companyLink: "https://1mg.com",
       companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2023-24",
-      impact: "25% conversion boost",
-      description: "Complete homepage revamp with A/B tested user flows and personalized onboarding experiences.",
-      tags: ["Growth Hacking", "A/B Testing", "Conversion Optimization"],
-      icon: <Target className="w-6 h-6" />,
-      details: "Implemented multi-variant testing framework, analyzed 100K+ user sessions, and rebuilt the entire onboarding experience."
-    },
-    {
-      id: 3,
-      title: "Role-Permission Architecture",
-      company: "Crackle",
-      companyLink: "https://crackle.so",
-      companyLogo: "",
-      period: "2023",
-      impact: "3x faster feature rollouts",
-      description: "Built scalable permission system enabling rapid feature deployment across different user segments.",
-      tags: ["System Design", "Architecture", "Scalability"],
-      icon: <Users className="w-6 h-6" />,
-      details: "Designed flexible RBAC system supporting 15+ user types, enabling feature flags and gradual rollouts."
+      impact: "₹10L annual savings · 55% communication volume reduced",
+      description: "Redesigned comms touchpoints and built monitoring dashboards, cutting costs and improving UX.",
+      tags: ["Communication Strategy", "Experimentation", "Analytics", "Cost Optimization"],
+      icon: <Lightbulb className="w-6 h-6" />,
+      details: "Introduced structured communication flow for quick commerce orders, eliminated redundant push notifications, and built dashboards for performance monitoring. Delivered significant annual savings while improving user experience."
     },
     {
       id: 4,
-      title: "dWeb vs mWeb Strategy",
-      company: "Samsung",
-      companyLink: "https://samsung.com",
-      companyLogo: "",
-      period: "2023",
-      impact: "Unified user experience",
-      description: "Strategic analysis and implementation roadmap for desktop vs mobile web platform optimization.",
-      tags: ["Strategy", "Platform Design", "User Journey"],
-      icon: <Lightbulb className="w-6 h-6" />,
-      details: "Comprehensive platform analysis leading to unified design system and shared component library across platforms."
+      title: "Rural Pharmacy POS Thesis",
+      company: "Indian Network for Impact",
+      companyLink: "https://indianetworkforimpact.com/",
+      companyLogo: "/lovable-uploads/f464991b-15e7-4982-ac64-a80948474c26.png",
+      period: "2024 (Ongoing)",
+      impact: "Market discovery project",
+      description: "Defined product thesis for rural POS solution through research, prototyping, and interviews.",
+      tags: ["User Research", "Market Discovery", "Product Prototyping", "Design Thinking"],
+      icon: <Users className="w-6 h-6" />,
+      details: "Conducted user interviews, market analysis, and prototype testing to explore inventory tracking at rural pharmacies. Built lightweight POS thesis leveraging existing tools and identified opportunities for scalable digitization."
     }
   ];
 
