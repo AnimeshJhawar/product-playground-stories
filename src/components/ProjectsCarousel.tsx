@@ -27,10 +27,10 @@ const caseStudies = [
   },
   {
     name: "Business Mela Competition by Recruit",
-    impact: "Business opportunities creator for Medium Small Scale Enterprises.",
+    impact: "Business opportunities creation and management mechanism for Medium Small Scale Enterprises.",
     tools: [<Figma key="figma" className="w-5 h-5" />],
     caseStudyLink: "#",
-    logo: "/lovable-uploads/recruit-logo.png"
+    logo: "/lovable-uploads/863f0d2c-1199-46ce-ae8d-11dd50ff8c8f.png"
   },
   {
     name: "Groww Campus Recruitment Deck",
