@@ -14,24 +14,45 @@ const ContactSection = () => {
     { id: 'just-hi', label: 'Just saying hi!' }
   ];
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const form = e.target as HTMLFormElement;
-    const formData = new FormData(form);
-    
-    // Check if all required fields are filled
-    const name = formData.get('name') as string;
-    const email = formData.get('email') as string;
-    const message = formData.get('message') as string;
-    
-    if (!selectedUseCase || !name || !email || !message) {
-      alert('Please fill in all required fields');
-      return;
+const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+  const form = e.target as HTMLFormElement;
+  const formData = new FormData(form);
+
+  const name = formData.get('name') as string;
+  const email = formData.get('email') as string;
+  const message = formData.get('message') as string;
+
+  if (!selectedUseCase || !name || !email || !message) {
+    alert('Please fill in all required fields');
+    return;
+  }
+
+  try {
+    const res = await fetch('/.netlify/functions/saveContact', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        email,
+        message,
+        useCase: selectedUseCase,
+      }),
+    });
+
+    if (res.ok) {
+      setIsSubmitted(true);
+      form.reset();
+      setSelectedUseCase('');
+      setTimeout(() => setIsSubmitted(false), 3000);
+    } else {
+      alert('Something went wrong. Please try again.');
     }
-    
-    setIsSubmitted(true);
-    setTimeout(() => setIsSubmitted(false), 3000);
-  };
+  } catch (err) {
+    console.error(err);
+    alert('Error sending message.');
+  }
+};
 
   return (
     <section id="contact" className="py-20 bg-gradient-to-br from-blue-50 via-purple-50 to-pink-50 dark:from-blue-900/20 dark:via-purple-900/20 dark:to-pink-900/20">
