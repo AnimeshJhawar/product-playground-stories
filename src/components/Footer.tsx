@@ -137,7 +137,7 @@ const Footer = () => {
               {/* Highlighted PM Resources */}
               <div className="mt-4">
                 <button
-                  onClick={() => scrollToSection('/pm-resources')}
+                  onClick={() => navigate('/pm-resources')}
                   className="w-full bg-gradient-to-r from-blue-600 to-purple-600 text-white px-4 py-3 rounded-lg text-sm font-medium hover:shadow-lg transition-all"
                 >
                   My PM Resources Hub
