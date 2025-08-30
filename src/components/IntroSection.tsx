@@ -44,7 +44,7 @@ const IntroSection: React.FC = () => {
           Narratives → Features → Impact
         </h2>
         <p className="text-base mt-2 font-inter text-slate-500 dark:text-slate-400 text-center max-w-xs mx-auto">
-          From healthtech to blockchain — shaping better journeys.
+          Shaping simpler, smarter journeys through healthtech and beyond.
         </p>
 
         {/* CTA Buttons */}
