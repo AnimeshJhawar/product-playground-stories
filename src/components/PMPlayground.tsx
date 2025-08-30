@@ -13,7 +13,7 @@ const PMPlayground = () => {
       companyLink: "https://1mg.com",
       companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2024",
-      impact: "10k+ DAUs impacted · +6% conversion · +10pp CSAT",
+      impact: ["10k+ DAUs impacted", "+6% conversion", "+10pp CSAT"],
       description: "Complete revamp of diagnostics desktop journey with lean resources, boosting trust, SEO, and performance.",
       tags: ["Product Discovery", "UX Audit", "UI/UX Design", "Lean Product Development", "SEO Strategy"],
       icon: <TrendingUp className="w-6 h-6" />,
@@ -26,7 +26,7 @@ const PMPlayground = () => {
       companyLink: "https://1mg.com",
       companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2024",
-      impact: "4000+ reports automated · 20,000 CX hours saved · 18% query reduction",
+      impact: ["4000+ reports automated", "20,000 CX hours saved", "18% query reduction"],
       description: "Enabled automated partial reports & critical callouts, improving compliance and customer experience.",
       tags: ["Product Development", "Automation", "Compliance-Driven Design", "CX Optimization", "Operational Efficiency"],
       icon: <Target className="w-6 h-6" />,
@@ -39,7 +39,7 @@ const PMPlayground = () => {
       companyLink: "https://1mg.com",
       companyLogo: "/lovable-uploads/45b571f1-3160-4a68-b4e0-25bd8d7fcb56.png",
       period: "2023-24",
-      impact: "₹10L annual savings · 55% communication volume reduced",
+      impact: ["₹10L annual savings", "55% comms reduced", "Improved UX"],
       description: "Redesigned comms touchpoints and built monitoring dashboards, cutting costs and improving UX.",
       tags: ["Communication Strategy", "Experimentation", "Analytics", "Cost Optimization"],
       icon: <Lightbulb className="w-6 h-6" />,
@@ -52,7 +52,7 @@ const PMPlayground = () => {
       companyLink: "https://indianetworkforimpact.com/",
       companyLogo: "/lovable-uploads/f464991b-15e7-4982-ac64-a80948474c26.png",
       period: "2024 (Ongoing)",
-      impact: "Market discovery project",
+      impact: ["Market research", "Prototyping", "Digitization thesis"],
       description: "Defined product thesis for rural POS solution through research, prototyping, and interviews.",
       tags: ["User Research", "Market Discovery", "Product Prototyping", "Design Thinking"],
       icon: <Users className="w-6 h-6" />,
@@ -137,13 +137,15 @@ const PMPlayground = () => {
                       {project.description}
                     </p>
                     
-                    <div className="flex items-center justify-between">
-                      <span className="text-sm font-semibold text-green-600 dark:text-green-400">
-                        {project.impact}
-                      </span>
-                      <ChevronRight size={16} className={`transition-transform duration-300 ${
-                        selectedProject === index ? 'rotate-90' : ''
-                      }`} />
+                    <div className="flex flex-wrap gap-2">
+                      {project.impact.map((item, i) => (
+                        <span
+                          key={i}
+                          className="px-3 py-1 bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400 rounded-full text-xs font-medium"
+                        >
+                          {item}
+                        </span>
+                      ))}
                     </div>
                   </div>
                 </div>
@@ -174,16 +176,21 @@ const PMPlayground = () => {
                 </div>
               </div>
 
-              <div className="mb-6">
-                <div className="inline-flex items-center gap-2 px-4 py-2 bg-green-100 dark:bg-green-900/30 rounded-full text-green-700 dark:text-green-400 text-sm font-semibold mb-4">
-                  <TrendingUp size={16} />
-                  {projects[selectedProject].impact}
-                </div>
-                
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed">
-                  {projects[selectedProject].details}
-                </p>
+              <div className="mb-6 flex flex-wrap gap-2">
+                {projects[selectedProject].impact.map((item, i) => (
+                  <div
+                    key={i}
+                    className="inline-flex items-center gap-2 px-3 py-1 bg-green-100 dark:bg-green-900/30 rounded-full text-green-700 dark:text-green-400 text-xs font-medium"
+                  >
+                    <TrendingUp size={14} />
+                    {item}
+                  </div>
+                ))}
               </div>
+                
+              <p className="text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                {projects[selectedProject].details}
+              </p>
 
               <div className="space-y-3">
                 <h4 className="font-semibold text-slate-900 dark:text-slate-100">Key Skills Applied</h4>
