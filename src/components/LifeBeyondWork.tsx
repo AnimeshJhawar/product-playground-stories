@@ -1,7 +1,6 @@
-
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Film, BookOpen, Gamepad2, Lightbulb, Coffee, Music } from 'lucide-react';
+import { Film, BookOpen, Gamepad2, Lightbulb, Coffee } from 'lucide-react';
 
 const LifeBeyondWork = () => {
   const [activeTab, setActiveTab] = useState(0);
@@ -13,10 +12,10 @@ const LifeBeyondWork = () => {
       content: {
         title: "Stories That Inspire",
         items: [
-          { name: "The Social Network", why: "Product strategy lessons from Zuck's journey" },
-          { name: "Her", why: "Human-AI interaction design inspiration" },
-          { name: "Black Mirror", why: "Ethical product development perspectives" },
-          { name: "Steve Jobs", why: "Vision meets execution storytelling" }
+          { name: "KGF 2", why: "How cinema can present a new, larger-than-life immersive world, where every detail is well thought out and creative." },
+          { name: "Money Heist", why: "A masterclass in narrative power – how the director tricks the audience, shifts sympathies, and redefines heroes through screenplay." },
+          { name: "The Social Network", why: "Product strategy lessons from Zuck’s journey and execution under pressure." },
+          { name: "Steve Jobs", why: "Vision meets execution storytelling – shaping ideas into revolutionary products." }
         ]
       }
     },
@@ -26,10 +25,10 @@ const LifeBeyondWork = () => {
       content: {
         title: "Currently Reading Stack",
         items: [
-          { name: "Atomic Habits", why: "Building systems for continuous improvement" },
-          { name: "Zero to One", why: "Creating monopolies through innovation" },
-          { name: "The Lean Startup", why: "Validated learning and rapid iteration" },
-          { name: "Hooked", why: "Building habit-forming products" }
+          { name: "Bhagavad Gita", why: "Timeless lessons on duty, clarity of thought, and decision-making under dilemmas." },
+          { name: "Atomic Habits", why: "Building systems for continuous improvement through small, compounding actions." },
+          { name: "The Power of Your Subconscious Mind", why: "Harnessing inner thought processes to build confidence and focus." },
+          { name: "Hooked", why: "Building habit-forming products by understanding human psychology." }
         ]
       }
     },
@@ -39,10 +38,10 @@ const LifeBeyondWork = () => {
       content: {
         title: "Games & Sports Philosophy",
         items: [
-          { name: "Table Tennis", why: "Quick decision making under pressure" },
-          { name: "Foosball", why: "Strategic thinking and team coordination" },
-          { name: "Chess.com", why: "Long-term planning and pattern recognition" },
-          { name: "Poker", why: "Risk assessment and reading people" }
+          { name: "Football", why: "Teamwork, strategy, and adapting quickly in dynamic situations." },
+          { name: "Gym", why: "Discipline, consistency, and incremental growth mindset." },
+          { name: "Table Tennis", why: "Quick decision-making under pressure and reflex training." },
+          { name: "Random Insta Ad Games", why: "Exploring quick design psychology – downloading, playing, then deleting reveals user retention challenges." }
         ]
       }
     },
@@ -50,12 +49,12 @@ const LifeBeyondWork = () => {
       title: "🎨 Creative Projects",
       icon: <Lightbulb className="w-6 h-6" />,
       content: {
-        title: "Event Planning Highlights",
+        title: "Team Building & Events",
         items: [
-          { name: "Swarnleela (Golden Jubilee)", why: "Complex stakeholder management & cultural storytelling" },
-          { name: "50th Birthday Celebration", why: "Personalized experience design & surprise choreography" },
-          { name: "Team Offsites", why: "Building psychological safety through creative activities" },
-          { name: "Crypto Trading Models", why: "Data analysis meets behavioral psychology" }
+          { name: "Swarnleela (Golden Jubilee)", why: "Complex stakeholder management & cultural storytelling." },
+          { name: "50th Birthday Celebration", why: "Personalized experience design & surprise choreography." },
+          { name: "Team Offsites", why: "Building psychological safety and keeping the team connected through creativity." },
+          { name: "Organizing Ideas", why: "Enjoying the process of planning and executing events that keep the team together." }
         ]
       }
     }
@@ -148,9 +147,9 @@ const LifeBeyondWork = () => {
                     Personal Philosophy
                   </h4>
                   <p className="text-slate-700 dark:text-slate-300 text-sm leading-relaxed">
-                    Every hobby teaches product thinking - from reading user psychology in poker faces 
-                    to orchestrating complex event experiences. The same lateral thinking that makes 
-                    a great event planner makes a great product manager.
+                    Every hobby teaches product thinking – from how narratives shape loyalty in cinema, 
+                    to exploring retention challenges in mobile games, to orchestrating events that keep teams together. 
+                    Lateral thinking outside work sharpens creative problem-solving within it.
                   </p>
                 </div>
               </div>
